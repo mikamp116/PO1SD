@@ -12,22 +12,21 @@ public class Coin {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	long id;
+	private long id;
 	
 	@OneToOne
-	CoinModel coinModel;
-	int coinYear;
-	String coinLocation;
-	Date acquisitionDate;
-	String preservationState;
+	private CoinModel coinModel;
+	private int coinYear;
+	private String coinLocation;
+	private Date acquisitionDate;
+	private String preservationState;
 	@OneToOne
-	Supplier supplier;
+	private Supplier supplier;
 	
 	public Coin() {}
 
 	public Coin(CoinModel coinModel, int coinYear, String coinLocation, Date acquisitionDate, String preservationState,
 			Supplier supplier) {
-		super();
 		this.coinModel = coinModel;
 		this.coinYear = coinYear;
 		this.coinLocation = coinLocation;
