@@ -1,13 +1,13 @@
-package com.sdz.museonumismatica;
+package com.sdz.museonumismatica.repositories;
 
 import java.sql.Date;
-
-import javax.persistence.OneToOne;
-
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.sdz.museonumismatica.Coin;
+import com.sdz.museonumismatica.CoinModel;
+import com.sdz.museonumismatica.Supplier;
 
 public interface CoinRepository extends JpaRepository<Coin, Long> {
-	Anuncio findByAsunto(String asunto);
 	List<Coin> findByCoinModel(CoinModel model);
 	List<Coin> findByYear(int coinYear);
 	List<Coin> findByAcquisition(Date acquisitionDate);
