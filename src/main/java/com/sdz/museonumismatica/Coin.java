@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * @author Jorge Chavero Morcillo
+ * Implementacion de los ejemplares de monedas
+ */
 @Entity
 public class Coin {
 	
