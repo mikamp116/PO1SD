@@ -20,7 +20,7 @@ public class CoinModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private int faceValue;
+    private float faceValue;
     private String currency;
     private int diameter; // en milimetros
     private int weight; // en gramos
@@ -29,7 +29,7 @@ public class CoinModel {
 
     public void coinModel(){}
 
-    public void coinModel(int faceValue, String currency, int diameter, int weight, Set<String> metals, String description){
+    public void coinModel(float faceValue, String currency, int diameter, int weight, Set<String> metals, String description){
         this.faceValue = faceValue;
         this.currency = currency;
         this.diameter = diameter;
@@ -38,7 +38,7 @@ public class CoinModel {
         this.description = description;
     }
 
-    public void coinModel(int faceValue, String currency, int diameter, int weight, String metal, String description){
+    public void coinModel(float faceValue, String currency, int diameter, int weight, String metal, String description){
         this.faceValue = faceValue;
         this.currency = currency;
         this.diameter = diameter;
@@ -48,11 +48,11 @@ public class CoinModel {
         this.description = description;
     }
 
-    public int getFaceValue() {
+    public float getFaceValue() {
         return faceValue;
     }
 
-    public void setFaceValue(int faceValue) {
+    public void setFaceValue(float faceValue) {
         this.faceValue = faceValue;
     }
 
