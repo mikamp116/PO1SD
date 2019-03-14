@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Museo DB</title>
+</head>
+<body>
+    <h1>MUSEO XXXTENTACION</h1>
+    <h2>Bienvenido a la base de datos del museo</h2>
+    <h3>Consultas</h3>
+
+    <form action="/consultas" method="post">
+        <fieldset>
+            <legend>Campos a seleccionar</legend>
+            <select name="entities">
+                <option value="coinModel">Modelo de moneda</option>
+                <option value="coin">Ejemplar</option>
+                <option value="supplier">Proveedor</option>
+            </select>
+            <input name="ir a consulta" type="submit" value="Consultar">
+        </fieldset>
+    </form>
+
+    <h3>Añadir</h3>
+
+    <form action="/anadir" method="post">
+        <fieldset>
+            <legend>Campos a seleccionar</legend>
+            <select name="entities">
+                <option value="coinModel">Modelo de moneda</option>
+                <option value="coin">Ejemplar</option>
+                <option value="supplier">Proveedor</option>
+            </select>
+            <input name="anadir" type="submit" value="Añadir">
+        </fieldset>
+    </form>
+
+</body>
+</html>
