@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
 </head>
 <body>
-    <h2>Consultas</h2>
-    <form action="/consultas" method="post">
+    <h1>Consultas</h1>
+    <form action="/coinModel" method="post">
         <fieldset>
             <legend>Filtros</legend>
-            <select name="buscar por">
-                <option></option>
+            Buscar por
+            <select name="searchBy">
+                <option value="faceValue">Valor facial</option>
+                <option value="currency">Divisa</option>
+                <option value="diameter">Diámetro (en mm)</option>
+                <option value="weight">Peso (en g)</option>
+                <option value="metals">Metales</option>
+                <option value="description">Palabras clave</option>
             </select>
+            Ordenar por
+            <select name="orderBy">
+                <option value="faceValue">Valor facial</option>
+                <option value="currency">Divisa</option>
+                <option value="diameter">Diámetro (en mm)</option>
+                <option value="weight">Peso (en g)</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+            <input name="show" type="submit" value="Mostrar">
         </fieldset>
-
     </form>
 
 
