@@ -83,4 +83,9 @@ public interface CoinRepository extends JpaRepository<Coin, Long> {
 	List<Coin> findAllByStateAndAcquisition(String state, Date date);
 	List<Coin> findAllByStateAndLocation(String state, String location);
 	List<Coin> findAllByStateAndSupplier(String state, Supplier supplier);
+
+	List<Coin> findAllBySupplierAndYear(CoinModel model, int year);
+	List<Coin> findAllBySupplierAndAcquisition(CoinModel model, Date date);
+	List<Coin> findAllBySupplierAndLocation(CoinModel model, String location);
+	List<Coin> findAllBySupplierAndState(CoinModel model, String state);
 }
