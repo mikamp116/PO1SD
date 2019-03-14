@@ -17,7 +17,7 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String CIF;
+    private String cif;
     private String name;
     private int postalCode;
     private String email;
@@ -25,8 +25,8 @@ public class Supplier {
 
     public Supplier() { }
 
-    public Supplier(String CIF, String name, int postalCode, String email, int phoneNumber) {
-        this.CIF = CIF;
+    public Supplier(String cif, String name, int postalCode, String email, int phoneNumber) {
+        this.cif = cif;
         this.name = name;
         this.postalCode = postalCode;
         this.email = email;
@@ -41,12 +41,12 @@ public class Supplier {
         this.id = id;
     }
 
-    public String getCIF() {
-        return CIF;
+    public String getCif() {
+        return cif;
     }
 
-    public void setCIF(String CIF) {
-        this.CIF = CIF;
+    public void setCif(String cif) {
+        this.cif = cif;
     }
 
     public String getName() {
