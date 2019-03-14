@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
 </head>
 <body>
-    <h1>Bienvenido a la base de datos del museo</h1>
+    <h1>MUSEO XXXTENTACION</h1>
+    <h2>Bienvenido a la base de datos del museo</h2>
     <h3>Consultas</h3>
+
+    <form action="/consultas" method="post">
+        <fieldset>
+            <legend>Campos a seleccionar</legend>
+            <select name="entitys">
+                <option value="coinModel">modelo de moneda</option>
+                <option value="coin">ejemplar</option>
+                <option value="supplier">proveedor</option>
+            </select>
+            <input name="ir a consulta" type="submit">
+        </fieldset>
+    </form>
+
+    <h3>Añadir</h3>
+
+    <form action="/anadir" method="post">
+        <fieldset>
+            <legend>Campos a seleccionar</legend>
+            <select name="entitys">
+                <option value="coinModel">modelo de moneda</option>
+                <option value="coin">ejemplar</option>
+                <option value="supplier">proveedor</option>
+            </select>
+            <input name="anadir" type="submit">
+        </fieldset>
+    </form>
 
 </body>
 </html>
