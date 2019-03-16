@@ -13,7 +13,7 @@ public class AddCoinModelController {
     private CoinModelRepository coinModelRepository;
 
     @RequestMapping("/coinModelAdded")
-    public String anadirModeloMoneda(CoinModel coinModel, Model model) {
+    public String addCoinModel(CoinModel coinModel, Model model) {
 
         coinModelRepository.save(coinModel);
 
