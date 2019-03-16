@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Museo DB</title>
+</head>
+<body>
+    <h1>Añadir modelo de moneda</h1>
+    <form action="/coinModelAdded" method="post">
+        <p>
+            Valor facial: <input type="number" step="any" name="facialValue">
+        </p>
+        <p>
+            Unidad monetaria: <input type="text" name="currency">
+        </p>
+        <p>
+            Diámetro (en milímetros): <input type="number" step="any" name="diameter">
+        </p>
+        <p>
+            Peso (en gramos): <input type="number" step="any" name="weight">
+        </p>
+
+        <p>Metal/es de los que está compuesto:</p>
+        <textarea name="metals" rows="1" cols="60">Metal 1(, metal 2, metal 3, ...)</textarea>
+
+        <p>Descripción: </p>
+        <textarea name="description" rows="6" cols="60"></textarea>
+
+        <p>Los valores decimales irán separados por coma</p>
+
+        <input name="add" type="submit" value="Añadir">
+    </form>
+</body>
+</html>

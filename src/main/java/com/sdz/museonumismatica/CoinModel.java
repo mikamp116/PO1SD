@@ -22,8 +22,8 @@ public class CoinModel {
     private long id;
     private float faceValue;
     private String currency;
-    private int diameter; // en milimetros
-    private int weight; // en gramos
+    private float diameter; // en milimetros
+    private float weight; // en gramos
     private Set<String> metals;
     private String description;
 
@@ -43,7 +43,7 @@ public class CoinModel {
         this.currency = currency;
         this.diameter = diameter;
         this.weight = weight;
-        this.metals = new TreeSet<String>();
+        this.metals = new TreeSet<>();
         this.metals.add(metal);
         this.description = description;
     }
@@ -64,7 +64,7 @@ public class CoinModel {
         this.currency = currency;
     }
 
-    public int getDiameter() {
+    public float getDiameter() {
         return diameter;
     }
 
@@ -72,7 +72,7 @@ public class CoinModel {
         this.diameter = diameter;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
