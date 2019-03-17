@@ -1,39 +1,60 @@
 package com.sdz.museonumismatica.controllers;
 
+import java.sql.Date;
 import java.util.List;
-
+import com.sdz.museonumismatica.CoinModel;
+import com.sdz.museonumismatica.Coin;
 import com.sdz.museonumismatica.Supplier;
+import com.sdz.museonumismatica.repositories.CoinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sdz.museonumismatica.Coin;
-import com.sdz.museonumismatica.repositories.CoinRepository;
+public class ShowCoinController {
+    @Autowired
+    private CoinRepository coinRepo;
 
-public class CoinController {
-	@Autowired
-	private CoinRepository coinRepo;
-	
-	@Autowired
-	
-	@RequestMapping("/showCoins")
-	public String tablon(Model model) {
-		model.addAttribute("coins", coinRepo.findAll());
-		return "";
-	}
-	
-	@RequestMapping("/newCoin")
-	public String insertar(Model model) {
-		List<Coin> coinList = coinRepo.findAll();
-		model.addAttribute("coins", coinList);
-		return"";
-	}
+    @Autowired
+
+    @RequestMapping("/showCoins")
+    public String tablon(Model model) {
+        model.addAttribute("coins", coinRepo.findAll());
+        return "";
+    }
 
     //BY COIN MODEL
-    @RequestMapping("/showByCoinModelOrderByYear")
-    public String showByCoinModelOrderByYear(@RequestParam CoinModel coinModel, int year, Model model) {
+    @RequestMapping("/showByCoinModel")
+    public String showByCoinModel(@RequestParam CoinModel coinModel, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModel(coinModel);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelOrderByYearDesc")
+    public String showByCoinModelOrderByYearDesc(@RequestParam CoinModel coinModel, int year, Model model) {
         List<Coin> coins = coinRepo.findAllByCoinModelOrderByYearDesc(coinModel, year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelOrderByYearAsc")
+    public String showByCoinModelOrderByYearAsc(@RequestParam CoinModel coinModel, int year, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelOrderByYearAsc(coinModel, year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelOrderByDateDesc")
+    public String showByCoinModelOrderByDateDesc(@RequestParam CoinModel coinModel, Date date, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelOrderByDateDesc(coinModel, date);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelOrderByDateAsc")
+    public String showByCoinModelOrderByDateAsc(@RequestParam CoinModel coinModel, Date date, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelOrderByDateAsc(coinModel, date);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
@@ -45,21 +66,42 @@ public class CoinController {
         return "coinQueries";
     }
 
-    @RequestMapping("/showByCoinModelOrderByLocation")
-    public String showByCoinModelOrderByLocation(@RequestParam CoinModel coinModel, String location, Model model) {
+    @RequestMapping("/showByCoinModelOrderByLocationDesc")
+    public String showByCoinModelOrderByLocationDesc(@RequestParam CoinModel coinModel, String location, Model model) {
         List<Coin> coins = coinRepo.findAllByCoinModelOrderByLocationDesc(coinModel, location);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showByCoinModelOrderByState")
-    public String showByCoinModelOrderByState(@RequestParam CoinModel coinModel, String state, Model model) {
+    @RequestMapping("/showByCoinModelOrderByLocationAsc")
+    public String showByCoinModelOrderByLocationAsc(@RequestParam CoinModel coinModel, String location, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelOrderByLocationAsc(coinModel, location);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelOrderByStateDesc")
+    public String showByCoinModelOrderByStateDesc(@RequestParam CoinModel coinModel, String state, Model model) {
         List<Coin> coins = coinRepo.findAllByCoinModelOrderByStateDesc(coinModel, state);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
+    @RequestMapping("/showByCoinModelOrderByStateAsc")
+    public String showByCoinModelOrderByStateAsc(@RequestParam CoinModel coinModel, String state, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelOrderByStateAsc(coinModel, state);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
     //BY YEAR
+    @RequestMapping("/showByYear")
+    public String showByYear(@RequestParam int year, Model model) {
+        List<Coin> coins = coinRepo.findAllByYear(year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
     @RequestMapping("/showByYearBetween")
     public String showByYearBetween(@RequestParam int startYear, int endYear, Model model) {
         List<Coin> coins = coinRepo.findAllByYearBetween(startYear, endYear);
@@ -82,96 +124,194 @@ public class CoinController {
     }
 
     //BY ACQUISITION DATE
+    @RequestMapping("/showByAcquisition")
+    public String showByAcquisition(@RequestParam Date acquisition, Model model) {
+        List<Coin> coins = coinRepo.findAllByAcquisition(acquisition);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
     @RequestMapping("/showByAcquisitionBetween")
-    public String showByAcquisitionBetween(@RequestParam date startAcquisition, date endAcquisition, Model model) {
+    public String showByAcquisitionBetween(@RequestParam Date startAcquisition, Date endAcquisition, Model model) {
         List<Coin> coins = coinRepo.findAllByAcquisitionBetween(startAcquisition, endAcquisition);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
     @RequestMapping("/showByAcquisitionBefore")
-    public String showByAcquisitionBefore(@RequestParam date acquisition, Model model) {
+    public String showByAcquisitionBefore(@RequestParam Date acquisition, Model model) {
         List<Coin> coins = coinRepo.findAllByAcquisitionBefore(acquisition);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
     @RequestMapping("/showByAcquisitionAfter")
-    public String showByAcquisitionAfter(@RequestParam date acquisition, Model model) {
+    public String showByAcquisitionAfter(@RequestParam Date acquisition, Model model) {
         List<Coin> coins = coinRepo.findAllByAcquisitionAfter(acquisition);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
     //BY LOCATION
-    @RequestMapping("/showByLocationOrderByYear")
-    public String showByLocationOrderByYear(@RequestParam String location, int year, Model model) {
+    @RequestMapping("/showByLocation")
+    public String showByLocation(@RequestParam String location, Model model) {
+        List<Coin> coins = coinRepo.findAllByLocation(location);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByLocationOrderByYearDesc")
+    public String showByLocationOrderByYearDesc(@RequestParam String location, int year, Model model) {
         List<Coin> coins = coinRepo.findAllByLocationOrderByYearDesc(location, year);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showByLocationOrderByDate")
-    public String showByLocationOrderByDate(@RequestParam String location, Date date, Model model) {
+    @RequestMapping("/showByLocationOrderByYearAsc")
+    public String showByLocationOrderByYearAsc(@RequestParam String location, int year, Model model) {
+        List<Coin> coins = coinRepo.findAllByLocationOrderByYearAsc(location, year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByLocationOrderByDateDesc")
+    public String showByLocationOrderByDateDesc(@RequestParam String location, Date date, Model model) {
         List<Coin> coins = coinRepo.findAllByLocationOrderByDateDesc(location, date);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showByLocationOrderByState")
-    public String showByLocationOrderByState(@RequestParam String location, String state, Model model) {
+    @RequestMapping("/showByLocationOrderByDateAsc")
+    public String showByLocationOrderByDateAsc(@RequestParam String location, Date date, Model model) {
+        List<Coin> coins = coinRepo.findAllByLocationOrderByDateAsc(location, date);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByLocationOrderByStateDesc")
+    public String showByLocationOrderByStateDesc(@RequestParam String location, String state, Model model) {
         List<Coin> coins = coinRepo.findAllByLocationOrderByStateDesc(location, state);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
+    @RequestMapping("/showByLocationOrderByStateAsc")
+    public String showByLocationOrderByStateAsc(@RequestParam String location, String state, Model model) {
+        List<Coin> coins = coinRepo.findAllByLocationOrderByStateAsc(location, state);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
     //BY STATE
-    @RequestMapping("/showByStateOrderByYear")
-    public String showByStateOrderByYear(@RequestParam String state, int year, Model model) {
+    @RequestMapping("/showByState")
+    public String showByState(@RequestParam String state, Model model) {
+        List<Coin> coins = coinRepo.findAllByState(state);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByStateOrderByYearDesc")
+    public String showByStateOrderByYearDesc(@RequestParam String state, int year, Model model) {
         List<Coin> coins = coinRepo.findAllByStateOrderByYearDesc(state, year);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showByStateOrderByDate")
-    public String showByStateOrderByDate(@RequestParam String state, Date date, Model model) {
+    @RequestMapping("/showByStateOrderByYearAsc")
+    public String showByStateOrderByYearAsc(@RequestParam String state, int year, Model model) {
+        List<Coin> coins = coinRepo.findAllByStateOrderByYearAsc(state, year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByStateOrderByDateDesc")
+    public String showByStateOrderByDateDesc(@RequestParam String state, Date date, Model model) {
         List<Coin> coins = coinRepo.findAllByStateOrderByDateDesc(state, date);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showByStateOrderByLocation")
-    public String showByStateOrderByLocation(@RequestParam String state, String location, Model model) {
+    @RequestMapping("/showByStateOrderByDateAsc")
+    public String showByStateOrderByDateAsc(@RequestParam String state, Date date, Model model) {
+        List<Coin> coins = coinRepo.findAllByStateOrderByDateAsc(state, date);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByStateOrderByLocationDesc")
+    public String showByStateOrderByLocationDesc(@RequestParam String state, String location, Model model) {
         List<Coin> coins = coinRepo.findAllByStateOrderByLocationDesc(state, location);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
+    @RequestMapping("/showByStateOrderByLocationAsc")
+    public String showByStateOrderByLocationAsc(@RequestParam String state, String location, Model model) {
+        List<Coin> coins = coinRepo.findAllByStateOrderByLocationAsc(state, location);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
     //BY SUPPLIER
-    @RequestMapping("/showBySupplierOrderByYear")
-    public String showBySupplierOrderByYear(@RequestParam Supplier supplier, int year, Model model) {
+    @RequestMapping("/showBySupplier")
+    public String showBySupplier(@RequestParam Supplier supplier, Model model) {
+        List<Coin> coins = coinRepo.findAllBySupplier(supplier);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showBySupplierOrderByYearDesc")
+    public String showBySupplierOrderByYearDesc(@RequestParam Supplier supplier, int year, Model model) {
         List<Coin> coins = coinRepo.findAllBySupplierOrderByYearDesc(supplier, year);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showBySupplierOrderByDate")
-    public String showBySupplierOrderByDate(@RequestParam Supplier supplier, Date date, Model model) {
+    @RequestMapping("/showBySupplierOrderByYearAsc")
+    public String showBySupplierOrderByYearAsc(@RequestParam Supplier supplier, int year, Model model) {
+        List<Coin> coins = coinRepo.findAllBySupplierOrderByYearAsc(supplier, year);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showBySupplierOrderByDateDesc")
+    public String showBySupplierOrderByDateDesc(@RequestParam Supplier supplier, Date date, Model model) {
         List<Coin> coins = coinRepo.findAllBySupplierOrderByDateDesc(supplier, date);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showBySupplierOrderByLocation")
-    public String showBySupplierOrderByLocation(@RequestParam Supplier supplier, String location, Model model) {
+    @RequestMapping("/showBySupplierOrderByDateAsc")
+    public String showBySupplierOrderByDateAsc(@RequestParam Supplier supplier, Date date, Model model) {
+        List<Coin> coins = coinRepo.findAllBySupplierOrderByDateAsc(supplier, date);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showBySupplierOrderByLocationDesc")
+    public String showBySupplierOrderByLocationDesc(@RequestParam Supplier supplier, String location, Model model) {
         List<Coin> coins = coinRepo.findAllBySupplierOrderByLocationDesc(supplier, location);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
 
-    @RequestMapping("/showBySupplierOrderByState")
-    public String showBySupplierOrderByState(@RequestParam Supplier supplier, String state, Model model) {
+    @RequestMapping("/showBySupplierOrderByLocationAsc")
+    public String showBySupplierOrderByLocationAsc(@RequestParam Supplier supplier, String location, Model model) {
+        List<Coin> coins = coinRepo.findAllBySupplierOrderByLocationAsc(supplier, location);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showBySupplierOrderByStateDesc")
+    public String showBySupplierOrderByStateDesc(@RequestParam Supplier supplier, String state, Model model) {
         List<Coin> coins = coinRepo.findAllBySupplierOrderByStateDesc(supplier, state);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showBySupplierOrderByStateAsc")
+    public String showBySupplierOrderByStateAsc(@RequestParam Supplier supplier, String state, Model model) {
+        List<Coin> coins = coinRepo.findAllBySupplierOrderByStateAsc(supplier, state);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
@@ -194,6 +334,13 @@ public class CoinController {
     @RequestMapping("/showByCoinModelAndLocation")
     public String showByCoinModelAndLocation(@RequestParam CoinModel coinModel,String location, Model model) {
         List<Coin> coins = coinRepo.findAllByCoinModelAndLocation(coinModel, location);
+        model.addAttribute("coins", coins);
+        return "coinQueries";
+    }
+
+    @RequestMapping("/showByCoinModelAndState")
+    public String showByCoinModelAndState(@RequestParam CoinModel coinModel, String state, Model model) {
+        List<Coin> coins = coinRepo.findAllByCoinModelAndState(coinModel, state);
         model.addAttribute("coins", coins);
         return "coinQueries";
     }
@@ -279,7 +426,7 @@ public class CoinController {
     }
 
     @RequestMapping("/showByLocationAndState")
-    public String showByLocationAndState(@RequestParamString location, String state, Model model) {
+    public String showByLocationAndState(@RequestParam String location, String state, Model model) {
         List<Coin> coins = coinRepo.findAllByLocationAndState(location, state);
         model.addAttribute("coins", coins);
         return "coinQueries";
@@ -294,7 +441,7 @@ public class CoinController {
 
     //STATE AND
     @RequestMapping("/showByStateAndYear")
-    public String showByStateAndYear(@RequestParam State State, int year, Model model) {
+    public String showByStateAndYear(@RequestParam String state, int year, Model model) {
         List<Coin> coins = coinRepo.findAllByStateAndYear(state, year);
         model.addAttribute("coins", coins);
         return "coinQueries";

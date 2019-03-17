@@ -18,5 +18,5 @@ public class AddCoinModelController {
         coinModelRepository.save(coinModel);
 
         return "coinModelAdded";
-    }
+}
 }

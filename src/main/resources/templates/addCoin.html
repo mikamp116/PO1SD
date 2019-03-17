@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Museo DB</title>
+</head>
+<body>
+    <h1>Añadir ejemplar de moneda</h1>
+    <form action="/coinAdded" method="post">
+        <p>
+            Modelo de moneda: <select name="coinModel">
+                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModel}"
+                        th:value="${coinModel.currency}" th:text="${coinModel.currency}"></option>
+            </select>
+            <a href="/addCoinModel.html">Registrar nuevo modelo de moneda</a>
+        </p>
+        <p>
+            Año: <input type="number" name="year">
+        </p>
+        <p>
+            Localizacion: <input type="text" name="postalCode">
+        </p>
+        <p>
+            Año de adquisición: <input type="date" name="acquisitionDate">
+        </p>
+        <p>
+            Estado de preservacion: <input type= "text" name= "preservationState">
+        </p>
+        <p>
+            Proveedor: <select name="supplier">
+            <option th:if="supplier.id != null" th:each="supplier : ${supplier}"
+                    th:value="${suupplier.name}" th:text="${supplier.name}"></option>
+            </select>
+            <a href="/addSupplier.html">Registrar nuevo proveedor</a>
+        </p>
+
+        <input name="add" type="submit" value="Añadir">
+    </form>
+</body>
+</html>
