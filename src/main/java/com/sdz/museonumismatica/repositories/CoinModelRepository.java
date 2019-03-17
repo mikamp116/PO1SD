@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author Victor Fernandez
@@ -82,7 +83,7 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByWeightGreaterThanEqualOrderByCurrencyAsc(int min);
     List<CoinModel> findAllByWeightGreaterThanEqualOrderByCurrencyDesc(int min);
 
-    List<CoinModel> findByMetalsIn(Set<String> metals);
+    List<CoinModel> findByMetalsIn(TreeSet<String> metals);
     List<CoinModel> findByDescriptionContaining(String desc);
 
 }
