@@ -24,12 +24,12 @@ public class CoinModel {
     private String currency;
     private float diameter; // en milimetros
     private float weight; // en gramos
-    private Set<String> metals;
+    private TreeSet<String> metals;
     private String description;
 
     public void coinModel(){}
 
-    public void coinModel(float faceValue, String currency, int diameter, int weight, Set<String> metals, String description){
+    public void coinModel(float faceValue, String currency, int diameter, int weight, TreeSet<String> metals, String description){
         this.faceValue = faceValue;
         this.currency = currency;
         this.diameter = diameter;
@@ -84,7 +84,7 @@ public class CoinModel {
         return metals;
     }
 
-    public void setMetals(Set<String> metals) {
+    public void setMetals(TreeSet<String> metals) {
         this.metals = metals;
     }
 
