@@ -1,6 +1,7 @@
 package com.sdz.museonumismatica.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,5 +14,11 @@ public class AddController {
         if (entity.equals("coin"))
             return "addCoin";
         return "addSupplier";
+    }
+
+    @RequestMapping("/anadir/{str}")
+    public String addFromURL(@PathVariable(value= "str") String str){
+        return "add" + str;
+
     }
 }

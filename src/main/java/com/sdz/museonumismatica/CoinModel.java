@@ -27,9 +27,9 @@ public class CoinModel {
     private TreeSet<String> metals;
     private String description;
 
-    public void coinModel(){}
+    public CoinModel(){}
 
-    public void coinModel(float faceValue, String currency, int diameter, int weight, TreeSet<String> metals, String description){
+    public CoinModel(float faceValue, String currency, float diameter, float weight, TreeSet<String> metals, String description){
         this.faceValue = faceValue;
         this.currency = currency;
         this.diameter = diameter;
@@ -38,7 +38,7 @@ public class CoinModel {
         this.description = description;
     }
 
-    public void coinModel(float faceValue, String currency, int diameter, int weight, String metal, String description){
+    public CoinModel(float faceValue, String currency, float diameter, float weight, String metal, String description){
         this.faceValue = faceValue;
         this.currency = currency;
         this.diameter = diameter;
