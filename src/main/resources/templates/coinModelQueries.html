@@ -6,33 +6,39 @@
 </head>
 <body>
     <h1>Consultas</h1>
-    <form action="/coinModel" method="post">
+    <form action="/coinModelQuery" method="post">
         <fieldset>
             <legend>Filtros</legend>
             Buscar por
             <select name="searchBy">
-                <option value="faceValue">Valor facial</option>
-                <option value="currency">Divisa</option>
-                <option value="diameter">Diámetro (en mm)</option>
-                <option value="weight">Peso (en g)</option>
-                <option value="metals">Metales</option>
-                <option value="description">Palabras clave</option>
+                <option value="FaceValue">Valor facial</option>
+                <option value="Currency">Divisa</option>
+                <option value="Diameter">Diámetro (en mm)</option>
+                <option value="Weight">Peso (en g)</option>
+                <option value="Metals">Metales</option>
+                <option value="Description">Palabras clave</option>
             </select>
             Ordenar por
             <select name="orderBy">
-                <option value="faceValue">Valor facial</option>
-                <option value="currency">Divisa</option>
-                <option value="diameter">Diámetro (en mm)</option>
-                <option value="weight">Peso (en g)</option>
+                <option value="FaceValue">Valor facial</option>
+                <option value="Currency">Divisa</option>
+                <option value="Diameter">Diámetro (en mm)</option>
+                <option value="Weight">Peso (en g)</option>
             </select>
             Orden
             <select name="order">
-                <option value="asc">Ascendente</option>
-                <option value="desc">Descendente</option>
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
             </select>
-            <input name="show" type="submit" value="Mostrar">
+        </fieldset>
+        <fieldset>
+            <legend>Consulta</legend>
+                <input name="query" type="text">
+            <input name="show" type="submit" value="Consultar">
         </fieldset>
     </form>
+
+
 
 
 </body>

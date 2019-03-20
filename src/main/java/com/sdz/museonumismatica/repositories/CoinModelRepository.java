@@ -21,7 +21,7 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByFaceValueOrderByWeightAsc(float faceValue);
     List<CoinModel> findAllByFaceValueOrderByWeightDesc(float faceValue);
 
-    List<CoinModel> findAllByCurrencyOrderByWeightAsc(String currency);
+    List<CoinModel> findAllByCurrency(String currency);
     List<CoinModel> findAllByCurrencyOrderByWeightDesc(String currency);
     List<CoinModel> findAllByCurrencyOrderByFaceValueAsc(String currency);
     List<CoinModel> findAllByCurrencyOrderByFaceValueDesc(String currency);
@@ -83,7 +83,7 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByWeightGreaterThanEqualOrderByCurrencyAsc(int min);
     List<CoinModel> findAllByWeightGreaterThanEqualOrderByCurrencyDesc(int min);
 
-    List<CoinModel> findByMetalsIn(TreeSet<String> metals);
+    List<CoinModel> findByMetalsIn(List<String> metals);
     List<CoinModel> findByDescriptionContaining(String desc);
 
 }
