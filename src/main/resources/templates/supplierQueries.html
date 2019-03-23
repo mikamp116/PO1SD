@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Museo DB</title>
+</head>
+<body>
+
+<h1>Consultas</h1>
+<form action="/supplierQuery" method="post">
+    <fieldset>
+        <legend>Filtros</legend>
+        Ordenar por
+        <select name="orderBy">
+            <option value="CIF">CIF</option>
+            <option value="Name">Nombre</option>
+            <option value="Postalcode">Codigo postal</option>
+            <option value="Email">Email</option>
+            <option value="Phonenumber">Numero de telefono</option>
+        </select>
+        Orden
+        <select name="order">
+            <option value="Asc">Ascendente</option>
+            <option value="Desc">Descendente</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Consulta</legend>
+        Buscar por
+        <select name="searchBy">
+            <option value="CIF">CIF</option>
+            <option value="Name">Nombre</option>
+            <option value="Postalcode">Codigo postal</option>
+            <option value="Email">Email</option>
+            <option value="Phonenumber">Numero de telefono</option>
+        </select>
+            <input name="query" type="text">
+        <input name="supplierQuery" type="submit" value="Consultar">
+    </fieldset>
+</form>
+
+<h2>Proveedores</h2>
+<p th:each="supplier : ${suppliers  }">
+    CIF:
+    <a th:text="${supplier.cif}"></a>
+    Nombre:
+    <a th:text="${supplier.name}"></a>
+    <br>
+    <a th:text="${supplier.postalCode}"></a>
+    <a th:text="${supplier.email}"></a>
+    <a th:text="${supplier.phoneNumber}"></a>
+    <a th:href="@{/modify(cif=${supplier.cif})}">Modificar</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Modificar proveedor</h1>
+    <form action="/modifySupplier" method="post">
+        <p th:each="supplier : ${supplier}">
+            Código de Identificación Fiscal: <input type="text" name="cif" th:value=${supplier.cif}>
+
+        </p>
+        <p>
+            Nombre: <input type="text" name="name" th:value="${supplier.name}">
+        </p>
+        <p>
+            Dirección postal: <input type="number" name="postalCode" th:value=${supplier.postalCode}>
+        </p>
+        <p>
+            Email: <input type="email" name="email" th:value="${supplier.email}">
+        </p>
+        <p>
+            Teléfono de contacto: <input type="number" th:value="${supplier.phoneNumber}">
+        </p>
+        <input name="modify" type="submit" value="Modificar">
+    </form>
+
+
+</body>
+</html>
