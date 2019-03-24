@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Museo DB</title>
+</head>
+<body>
+
+<h1>Consultas</h1>
+<form action="/coinQuery" method="post">
+    <fieldset>
+        <legend>Filtros</legend>
+        Ordenar por
+        <select name="orderBy">
+            <option value="CoinModel">Modelo de moneda</option>
+            <option value="CoinYear">Año</option>
+            <option value="AcquisitionDate">Año de adquisición</option>
+            <option value="CoinLocation">Localización de la moneda</option>
+            <option value="PreservationState">Numero de telefono</option>
+        </select>
+        Orden
+        <select name="order">
+            <option value="Asc">Ascendente</option>
+            <option value="Desc">Descendente</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Consulta</legend>
+        Buscar por modelo de moneda:
+        <input name="queryCoinModel" type="">
+        <br>
+        Buscar por proveedor:
+        <input name="querySupplier" type="">
+        <br>
+        Buscar por año de adquisicion:
+        </select>
+        <input name="queryDate" type="date">
+        <br>
+        Buscar por
+        <select name="searchBy">
+            <option value="CoinYear">año de la moneda</option>
+            <option value="CoinLocation">localización de la moneda</option>
+            <option value="PreservationState">estado de preseración</option>
+        </select>
+        <input name="query" type="text">
+        <input name="coinQuery" type="submit" value="Consultar">
+    </fieldset>
+</form>
+</body>
+</html>
