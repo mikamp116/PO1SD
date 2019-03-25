@@ -12,7 +12,6 @@
         <legend>Filtros</legend>
         Ordenar por
         <select name="orderBy">
-            <option value="CoinModel">Modelo de moneda</option>
             <option value="CoinYear">Año</option>
             <option value="AcquisitionDate">Año de adquisición</option>
             <option value="CoinLocation">Localización de la moneda</option>
@@ -25,26 +24,94 @@
         </select>
     </fieldset>
     <fieldset>
-        <legend>Consulta</legend>
-        Buscar por modelo de moneda:
-        <input name="queryCoinModel" type="">
+        <legend>Consultas</legend>
+        Selecciona una opción y después rellena los campos de dicha opción.<br>
+        Buscar por: <select name="searchBy">
+        <option value="CoinModel">modelo de moneda</option>
+        <option value="Supplier">proveedor</option>
+        <option value="CoinYear">año de la moneda</option>
+        <option value="AcquisitionDate">fecha de adquisición</option>
+        <option value="CoinLocation">localización de la moneda</option>
+        <option value="PreservationState">estado de preseración</option>
+    </select>
         <br>
-        Buscar por proveedor:
-        <input name="querySupplier" type="">
+        <fieldset>
+            <legend>Busqueda por modelo de moneda</legend>
+            <select name="queryCoinModel">
+                <option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
+                        th:value="${coinModel.currency}" th:text="${coinModel.currency}"></option>
+            </select><br>
+            Registrar nuevo modelo de moneda
+            NO VA
+            <form action="/anadir/CoinModel" method="post">
+                <input name="anadir" type="submit" value="Crear">
+            </form>
+        </fieldset>
         <br>
-        Buscar por año de adquisicion:
-        </select>
-        <input name="queryDate" type="date">
+        <fieldset>
+            <legend>Busqueda por proveedor</legend>
+            <select name="querySupplier">
+                <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
+                        th:value="${supplier.name}" th:text="${supplier.name}"></option>
+            </select><br>
+            Registrar nuevo proveedor
+            <form action="/anadir/Supplier" method="post">
+                <input name="anadir" type="submit" value="Crear">
+            </form>
+        </fieldset>
         <br>
-        Buscar por
-        <select name="searchBy">
-            <option value="CoinYear">año de la moneda</option>
-            <option value="CoinLocation">localización de la moneda</option>
-            <option value="PreservationState">estado de preseración</option>
-        </select>
-        <input name="query" type="text">
+        <fieldset>
+            <legend>Busqueda por año de la moneda</legend>
+            <select name="time">
+                <option value="None">Buscar y ordernar por año</option>
+                <option value="Before">Antes</option>
+                <option value="After">Despues</option>
+                <option value="Between">Entre</option>
+            </select>
+            <input name="queryYear" type="Number"><br>
+            Rellenar si se elije Entre:<input name="queryYear2" type="Number">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Busqueda por fecha de adquisición</legend>
+            <select name="time">
+                <option value="None">Buscar y ordernar por fecha</option>
+                <option value="Before">Antes</option>
+                <option value="After">Despues</option>
+                <option value="Between">Entre</option>
+            </select>
+            <input name="queryDate" type="date"><br>
+            Rellenar el siguiente si elije "Entre":<input name="queryDate2" type="date">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Busqueda por estado de la moneda</legend>
+            <input name="query" type="text">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Busqueda por localización de la moneda</legend>
+            <input name="query" type="text">
+        </fieldset>
+        <br>
         <input name="coinQuery" type="submit" value="Consultar">
     </fieldset>
 </form>
+
+<h2>Ejemplares</h2>
+<p th:each="coin : ${coins}">
+    Modelo de moneda:<a th:text="${coin.coinModel.currency}"></a> ,el valor es<a th:text="${coin.coinModel.currency}"></a>
+    <br>
+    Proveedor:<a th:text="${coin.supplier.name}"></a>
+    <br>
+    Año de la moneda: <a th:text="${coin.coinYear}"></a>
+    <br>
+    Fecha de adquisición: <a th:text="${coin.acquisitionDate}"></a>
+    <br>
+    Localización de la moneda: <a th:text="${coin.coinLocation}"></a>
+    <br>
+    Estado de preservación: <a th:text="${coin.preservationState}"></a>
+    <a th:href="@{/modifyC(cif=${coin.coinYear})}">Modificar</a>
+</p>
 </body>
 </html>

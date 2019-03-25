@@ -7,14 +7,14 @@
 <body>
 <h1>Modificar proveedor</h1>
 <form action="/modifyCoin" method="post">
-    <p th:each="coin : ${coin}">
-        Modelo de moneda: <input type="" name="coinModel" th:value=${coin.coinModel}>
+    <p th:each="coin : ${coins}">
+        Modelo de moneda: <input type="" name="coinModel" th:value="${coin.coinModel}">
     </p>
     <p>
         Año: <input type="number" name="coinYear" th:value="${coin.coinYear}">
     </p>
     <p>
-        Fecha de adquisición: <input type="date" name="acquisitionYear" th:value=${coin.acquisitionYear}>
+        Fecha de adquisición: <input type="date" name="acquisitionYear" th:value="${coin.acquisitionYear}">
     </p>
     <p>
         Localización de la moneda: <input type="text" name="coinLocation" th:value="${coin.coinLocation}">

@@ -22,8 +22,10 @@ public class ShowCoinController {
                           @RequestParam(value = "time") String time,
                           @RequestParam(value = "order") String order,
                           @RequestParam(value = "query") String query,
+                          @RequestParam(value = "query2") String query2,
                           @RequestParam(value = "queryC") CoinModel queryCoin,
                           @RequestParam(value = "queryD") Date queryDate,
+                          @RequestParam(value = "queryD2") Date queryDate2,
                           @RequestParam(value = "querySP") Supplier querySupplier,
                           Model model) {
 
@@ -62,34 +64,172 @@ public class ShowCoinController {
                     }
                 break;
             case "CoinYear":
-                if (orderBy.equals("CoinYear"))
-                        coins = coinRepo.findAllByCoinYear(Integer.parseInt(query));
-                    else
-                        switch (time) {
-                        case "Between":
-                            coins = coinRepo.findAllByCoinYearBetween(Integer.parseInt(query), Integer.parseInt(query));
+                if (time.equals("None"))
+                    coins = coinRepo.findAllByCoinYear(Integer.parseInt(query));
+                else
+                    switch (time) {
+                        case "Before":
+                            if(orderBy.equals("CoinYear"))
+                                coins = coinRepo.findAllByCoinYearBefore(Integer.parseInt(query));
+                            else{
+                                switch(orderBy){
+                                    case "Date":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByAcquisitionDateAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByAcquisitionDateDesc(Integer.parseInt(query));
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByCoinLocationAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByCoinLocationDesc(Integer.parseInt(query));
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByPreservationStateAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBeforeOrderByPreservationStateDesc(Integer.parseInt(query));
+                                        break;
+                                }
+                            }
                             break;
                         case "After":
-                            coins = coinRepo.findAllByCoinYearAfter(Integer.parseInt(query));
+                            if(orderBy.equals("CoinYear"))
+                                coins = coinRepo.findAllByCoinYearAfter(Integer.parseInt(query));
+                            else{
+                                switch(orderBy){
+                                    case "Date":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByAcquisitionDateAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByAcquisitionDateDesc(Integer.parseInt(query));
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByCoinLocationAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByCoinLocationDesc(Integer.parseInt(query));
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByPreservationStateAsc(Integer.parseInt(query));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearAfterOrderByPreservationStateDesc(Integer.parseInt(query));
+                                        break;
+                                }
+                            }
                             break;
-                        case "Before":
-                            coins = coinRepo.findAllByCoinYearBefore(Integer.parseInt(query));
+                        case "Between":
+                            if(orderBy.equals("CoinYear"))
+                                coins = coinRepo.findAllByCoinYearBetween(Integer.parseInt(query), Integer.parseInt(query2));
+                            else{
+                                switch(orderBy){
+                                    case "Date":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByAcquisitionDateAsc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByAcquisitionDateDesc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByCoinLocationAsc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByCoinLocationDesc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByPreservationStateAsc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        else
+                                            coins = coinRepo.findAllByCoinYearBetweenOrderByPreservationStateDesc(Integer.parseInt(query), Integer.parseInt(query2));
+                                        break;
+                                }
+                            }
                             break;
                     }
                 break;
             case "AcquisitionDate":
-                if (orderBy.equals("AcquisitionDate"))
+                if (time.equals("None"))
                     coins = coinRepo.findAllByAcquisitionDate(queryDate);
                 else
-                    switch (orderBy) {
-                        case "Between":
-                            coins = coinRepo.findAllByAcquisitionDateBetween(queryDate, queryDate);
+                    switch (time) {
+                        case "Before":
+                            if(orderBy.equals("AcquisitionDate"))
+                                coins = coinRepo.findAllByAcquisitionDateBefore(queryDate);
+                            else{
+                                switch(orderBy){
+                                    case "CoinYear":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByCoinYearAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByCoinYearDesc(queryDate);
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByCoinLocationAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByCoinLocationDesc(queryDate);
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByPreservationStateAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBeforeOrderByPreservationStateDesc(queryDate);
+                                        break;
+                                }
+                            }
                             break;
                         case "After":
-                            coins = coinRepo.findAllByAcquisitionDateAfter(queryDate);
+                            if(orderBy.equals("AcquisitionDate"))
+                                coins = coinRepo.findAllByAcquisitionDateAfter(queryDate);
+                            else{
+                                switch(orderBy){
+                                    case "CoinYear":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByCoinYearAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByCoinYearDesc(queryDate);
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByCoinLocationAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByCoinLocationDesc(queryDate);
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByPreservationStateAsc(queryDate);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateAfterOrderByPreservationStateDesc(queryDate);
+                                        break;
+                                }
+                            }
                             break;
-                        case "Before":
-                            coins = coinRepo.findAllByAcquisitionDateBefore(queryDate);
+                        case "Between":
+                            if(orderBy.equals("AcquisitionDate"))
+                                coins = coinRepo.findAllByAcquisitionDateBetween(queryDate, queryDate2);
+                            else{
+                                switch(orderBy){
+                                    case "CoinYear":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByCoinYearAsc(queryDate, queryDate2);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByCoinYearDesc(queryDate, queryDate2);
+                                        break;
+                                    case "CoinLocation":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByCoinLocationAsc(queryDate, queryDate2);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByCoinLocationDesc(queryDate, queryDate2);
+                                        break;
+                                    case "PreservationState":
+                                        if (order.equals("Asc"))
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByPreservationStateAsc(queryDate, queryDate2);
+                                        else
+                                            coins = coinRepo.findAllByAcquisitionDateBetweenOrderByPreservationStateDesc(queryDate, queryDate2);
+                                        break;
+                                }
+                            }
                             break;
                     }
                 break;

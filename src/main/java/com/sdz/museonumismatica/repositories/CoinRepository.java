@@ -25,15 +25,51 @@ public interface CoinRepository extends JpaRepository<Coin, Long> {
 
 	// Busqueda por año de la moneda
 	List<Coin> findAllByCoinYear(int year);
-	List<Coin> findAllByCoinYearBetween(int yearStart, int yearEnd);
 	List<Coin> findAllByCoinYearBefore(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByAcquisitionDateAsc(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByAcquisitionDateDesc(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByCoinLocationAsc(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByCoinLocationDesc(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByPreservationStateAsc(int year);
+	List<Coin> findAllByCoinYearBeforeOrderByPreservationStateDesc(int year);
 	List<Coin> findAllByCoinYearAfter(int year);
+	List<Coin> findAllByCoinYearAfterOrderByAcquisitionDateAsc(int year);
+	List<Coin> findAllByCoinYearAfterOrderByAcquisitionDateDesc(int year);
+	List<Coin> findAllByCoinYearAfterOrderByCoinLocationAsc(int year);
+	List<Coin> findAllByCoinYearAfterOrderByCoinLocationDesc(int year);
+	List<Coin> findAllByCoinYearAfterOrderByPreservationStateAsc(int year);
+	List<Coin> findAllByCoinYearAfterOrderByPreservationStateDesc(int year);
+	List<Coin> findAllByCoinYearBetween(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByAcquisitionDateAsc(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByAcquisitionDateDesc(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByCoinLocationAsc(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByCoinLocationDesc(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByPreservationStateAsc(int year, int year2);
+	List<Coin> findAllByCoinYearBetweenOrderByPreservationStateDesc(int year, int year2);
 
 	// Busqueda por adquisición de la moneda
 	List<Coin> findAllByAcquisitionDate(Date date);
-	List<Coin> findAllByAcquisitionDateBetween(Date dateStart, Date dateEnd);
 	List<Coin> findAllByAcquisitionDateBefore(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByCoinYearAsc(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByCoinYearDesc(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByCoinLocationAsc(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByCoinLocationDesc(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByPreservationStateAsc(Date date);
+	List<Coin> findAllByAcquisitionDateBeforeOrderByPreservationStateDesc(Date date);
 	List<Coin> findAllByAcquisitionDateAfter(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByCoinYearAsc(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByCoinYearDesc(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByCoinLocationAsc(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByCoinLocationDesc(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByPreservationStateAsc(Date date);
+	List<Coin> findAllByAcquisitionDateAfterOrderByPreservationStateDesc(Date date);
+	List<Coin> findAllByAcquisitionDateBetween(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByCoinYearAsc(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByCoinYearDesc(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByCoinLocationAsc(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByCoinLocationDesc(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByPreservationStateAsc(Date date, Date date2);
+	List<Coin> findAllByAcquisitionDateBetweenOrderByPreservationStateDesc(Date date, Date date2);
 
 	//Busqueda por localización de la moneda
 	List<Coin> findAllByCoinLocation(String coinLocation);
