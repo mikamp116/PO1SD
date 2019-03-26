@@ -33,6 +33,15 @@ public class Supplier {
         this.phoneNumber = phoneNumber;
     }
 
+    public Supplier(Long id, String cif, String name, int postalCode, String email, int phoneNumber) {
+        this.id = id;
+        this.cif = cif;
+        this.name = name;
+        this.postalCode = postalCode;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public long getId() {
         return id;
     }

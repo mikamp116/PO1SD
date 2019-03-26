@@ -40,7 +40,7 @@
 </form>
 
 <h2>Proveedores</h2>
-<p th:each="supplier : ${suppliers  }">
+<p th:each="supplier : ${suppliers}">
     CIF:
     <a th:text="${supplier.cif}"></a>
     Nombre:
@@ -49,7 +49,7 @@
     <a th:text="${supplier.postalCode}"></a>
     <a th:text="${supplier.email}"></a>
     <a th:text="${supplier.phoneNumber}"></a>
-    <a th:href="@{/modify(cif=${supplier.cif})}">Modificar</a>
+    <a th:href="@{/modify(id=${supplier.id}, supp=${supplier})}">Modificar</a>
 </p>
 </body>
 </html>

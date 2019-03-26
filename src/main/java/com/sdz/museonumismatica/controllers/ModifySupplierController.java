@@ -14,16 +14,7 @@ public class ModifySupplierController {
 
     @RequestMapping("/modifySupplier")
     public String modifySupplier(Supplier supplier, Model model) {
-
-        supplierRepository.delete(supplier);
         supplierRepository.save(supplier);
-        /*Supplier s = supplierRepository.getOne(supplier.getId());
-        s.setCif(supplier.getCif());
-        s.setEmail(supplier.getEmail());
-        s.setName(supplier.getName());
-        s.setPhoneNumber(supplier.getPhoneNumber());
-        s.setPostalCode(supplier.getPostalCode());*/
-
         return "supplierModified";
     }
 }

@@ -136,7 +136,7 @@ public class ShowSupplierController {
                         case "Name":
                             if (order.equals("Asc"))
                                 suppliers = supplierRepository.findByEmailOrderByNameAsc(query);
-                            else 
+                            else
                                 suppliers = supplierRepository.findByEmailOrderByNameDesc(query);
                             break;
                         case "Postalcode":
@@ -185,24 +185,16 @@ public class ShowSupplierController {
                     }
                 break;
         }
-        
+
         model.addAttribute("suppliers", suppliers);
 
         return "/supplierQueries";
     }
 
     @RequestMapping("/modify")
-    public String modify(@RequestParam String cif, Model model) {
-        List<Supplier> suppliers = supplierRepository.findByCif(cif);
-        Supplier supplier;
-        if (!suppliers.isEmpty()) {
-            supplier = suppliers.get(0);
-        } else {
-            supplier = new Supplier();
-        }
-        model.addAttribute("supplier", supplier);
-        supplierRepository.delete(supplier);
-
+    public String modify(@RequestParam Long id, Model model) {
+        Supplier sp = supplierRepository.getOne(id);
+        model.addAttribute("supplier", sp);
         return "showSupplier";
     }
 }
