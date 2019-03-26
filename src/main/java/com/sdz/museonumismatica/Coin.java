@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 
 /**
  * @author Jorge Chavero Morcillo
+ *
  * Implementacion de los ejemplares de monedas
  */
 @Entity
@@ -29,6 +30,17 @@ public class Coin {
 	
 	public Coin() {}
 
+	public Coin(long id, CoinModel coinModel, int coinYear, String coinLocation, Date acquisitionDate, String preservationState,
+				Supplier supplier) {
+		this.id = id;
+		this.coinModel = coinModel;
+		this.coinYear = coinYear;
+		this.coinLocation = coinLocation;
+		this.acquisitionDate = acquisitionDate;
+		this.preservationState = preservationState;
+		this.supplier = supplier;
+	}
+
 	public Coin(CoinModel coinModel, int coinYear, String coinLocation, Date acquisitionDate, String preservationState,
 			Supplier supplier) {
 		this.coinModel = coinModel;
@@ -37,6 +49,14 @@ public class Coin {
 		this.acquisitionDate = acquisitionDate;
 		this.preservationState = preservationState;
 		this.supplier = supplier;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public CoinModel getCoinModel() {

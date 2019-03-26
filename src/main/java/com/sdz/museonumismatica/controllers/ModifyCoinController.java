@@ -14,10 +14,7 @@ public class ModifyCoinController {
 
     @RequestMapping("/modifyCoin")
     public String modifySupplier(Coin coin, Model model) {
-
-        coinRepo.delete(coin);
         coinRepo.save(coin);
-
         return "coinModified";
     }
 }

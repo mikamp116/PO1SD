@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,14 +7,18 @@
 <body>
 <h1>Modificar proveedor</h1>
 <form action="/modifyCoin" method="post">
-    <p th:each="coin : ${coins}">
-        Modelo de moneda: <input type="" name="coinModel" th:value="${coin.coinModel}">
+                    <input type="hidden" name="id" th:value="${coin.id}">
+
+    <p>
+        Modelo de moneda: <select><option th:if="coinModel.id!=null" th:each="coinModel : ${coinModel}"
+                                  th:value="${coin.coinModel}" th:text="${coinModel.currency}"></option>
+        </select>
     </p>
     <p>
         Año: <input type="number" name="coinYear" th:value="${coin.coinYear}">
     </p>
     <p>
-        Fecha de adquisición: <input type="date" name="acquisitionYear" th:value="${coin.acquisitionYear}">
+        Fecha de adquisición: <input type="date" name="acquisitionDate" th:value="${coin.acquisitionDate}">
     </p>
     <p>
         Localización de la moneda: <input type="text" name="coinLocation" th:value="${coin.coinLocation}">

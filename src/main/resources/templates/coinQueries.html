@@ -40,12 +40,7 @@
             <select name="queryCoinModel">
                 <option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
                         th:value="${coinModel.currency}" th:text="${coinModel.currency}"></option>
-            </select><br>
-            Registrar nuevo modelo de moneda
-            NO VA
-            <form action="/anadir/CoinModel" method="post">
-                <input name="anadir" type="submit" value="Crear">
-            </form>
+            </select>
         </fieldset>
         <br>
         <fieldset>
@@ -53,11 +48,7 @@
             <select name="querySupplier">
                 <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
                         th:value="${supplier.name}" th:text="${supplier.name}"></option>
-            </select><br>
-            Registrar nuevo proveedor
-            <form action="/anadir/Supplier" method="post">
-                <input name="anadir" type="submit" value="Crear">
-            </form>
+            </select>
         </fieldset>
         <br>
         <fieldset>
@@ -111,7 +102,7 @@
     Localización de la moneda: <a th:text="${coin.coinLocation}"></a>
     <br>
     Estado de preservación: <a th:text="${coin.preservationState}"></a>
-    <a th:href="@{/modifyC(cif=${coin.coinYear})}">Modificar</a>
+    <a th:href="@{/modify(id=${coin.id}, coinn=${coin})}">Modificar</a>
 </p>
 </body>
 </html>

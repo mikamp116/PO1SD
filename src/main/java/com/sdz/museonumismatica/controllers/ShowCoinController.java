@@ -7,11 +7,14 @@ import com.sdz.museonumismatica.CoinModel;
 import com.sdz.museonumismatica.Coin;
 import com.sdz.museonumismatica.Supplier;
 import com.sdz.museonumismatica.repositories.CoinRepository;
+import com.sdz.museonumismatica.repositories.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class ShowCoinController {
     @Autowired
     private CoinRepository coinRepo;
@@ -320,17 +323,9 @@ public class ShowCoinController {
     }
 
     @RequestMapping("/modify")
-    public String modify(@RequestParam int coinYear, Model model) {
-        List<Coin> coins = coinRepo.findAllByCoinYear(coinYear);
-        Coin coin;
-        if (!coins.isEmpty()) {
-            coin = coins.get(0);
-        } else {
-            coin = new Coin();
-        }
+    public String modify(@RequestParam Long id, Model model) {
+        Coin coin = coinRepo.getOne(id);
         model.addAttribute("coin", coin);
-        coinRepo.delete(coin);
-
         return "showCoin";
     }
 }
