@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Modificar proveedor</h1>
+<form action="/modifyCoin" method="post">
+    <p th:each="coin : ${coins}">
+        Modelo de moneda: <input type="" name="coinModel" th:value="${coin.coinModel}">
+    </p>
+    <p>
+        Año: <input type="number" name="coinYear" th:value="${coin.coinYear}">
+    </p>
+    <p>
+        Fecha de adquisición: <input type="date" name="acquisitionYear" th:value="${coin.acquisitionYear}">
+    </p>
+    <p>
+        Localización de la moneda: <input type="text" name="coinLocation" th:value="${coin.coinLocation}">
+    </p>
+    <p>
+        Estado de preservación: <input type="text" name="preservationState" th:value="${coin.preservationState}">
+    </p>
+    <p>
+        Proveedor: <input type="" name="supplier" th:value="${coin.supplier}">
+    </p>
+    <input name="modify" type="submit" value="Modificar">
+</form>
+</body>
+</html>
