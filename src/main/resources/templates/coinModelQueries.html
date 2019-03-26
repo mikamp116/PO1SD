@@ -8,36 +8,51 @@
     <h1>Consultas</h1>
     <form action="/coinModelQuery" method="post">
         <fieldset>
+            <legend>Consultas</legend>
+            Valor facial
+            <input name="FaceValue" type="number" min="0" step="0.01">
+            Divisa
+            <input name="Currency" type="text">
+            Diámetro (en mm)
+            <input name="Diameter" type="number" min="0" step="0.01">
+            Peso (en g)
+            <input name="Weight" type="number" min="0" step="0.01">
+            Metales
+            <textarea name="Metals" rows="1" cols="20" placeholder="Introducir elementos separados por coma y espacio. Ej: Oro, Níquel, Plata..."></textarea>
+            Descripción
+            <textarea name="Description" rows="1" cols="20"></textarea>
+        </fieldset>
+        <fieldset>
             <legend>Filtros</legend>
-            Buscar por
-            <select name="searchBy">
-                <option value="FaceValue">Valor facial</option>
-                <option value="Currency">Divisa</option>
-                <option value="Diameter">Diámetro (en mm)</option>
-                <option value="Weight">Peso (en g)</option>
-                <option value="Metals">Metales</option>
-                <option value="Description">Palabras clave</option>
-            </select>
             Ordenar por
             <select name="orderBy">
                 <option value="FaceValue">Valor facial</option>
-                <option value="Currency">Divisa</option>
                 <option value="Diameter">Diámetro (en mm)</option>
                 <option value="Weight">Peso (en g)</option>
             </select>
             Orden
             <select name="order">
-                <option value="Asc">Ascendente</option>
-                <option value="Desc">Descendente</option>
+                <option value="1">Ascendente</option>
+                <option value="0">Descendente</option>
             </select>
         </fieldset>
-        <fieldset>
-            <legend>Consulta</legend>
-                <input name="query" type="text">
-            <input name="show" type="submit" value="Consultar">
-        </fieldset>
+        <input name="show" type="submit" value="Consultar">
     </form>
 
+    <h2>Modelos de moneda</h2>
+    <p th:each="coinModel : ${coinModels}">
+        Valor facial:
+        <a th:text="${coinModel.faceValue}"></a>
+        Divisa:
+        <a th:text="${coinModel.currency}"></a>
+        Diámetro (en mm)
+        <a th:text="${coinModel.diameter}"></a>
+        Peso (en g)
+        <a th:text="${coinModel.weight}"></a>
+        Metales
+        <a th:text="${coinModel.metals}"></a>
+        <a th:href="@{/modifyCoinModel(id=${coinModel.id})}">Modificar</a>
+    </p>
 
 
 

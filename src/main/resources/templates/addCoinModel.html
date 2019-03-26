@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
 </head>
 <body>
     <h1>Añadir modelo de moneda</h1>
-    <form action="/coinModelAdded" method="post">
+    <form action="coinModelAdded" method="POST">
         <p>
-            Valor facial: <input type="number" step="any" name="faceValue">
+            Valor facial: <input type="number" step="0.01" min="0" name="faceValue">
         </p>
+    <!-- <p th:if="${#fields.hasErrors('faceValue'}" th:errors="*{faceValue}">error de valor facial</p> -->
         <p>
             Unidad monetaria: <input type="text" name="currency">
         </p>
+    <!--   <p th:if="${#fields.hasErrors('currency'}" th:errors="*{currency}">error de unidad monetaria</p> -->
         <p>
-            Diámetro (en milímetros): <input type="number" step="any" name="diameter">
+            Diámetro (en mm): <input type="number" step="0.01" min="0" name="diameter">
         </p>
+    <!--    <p th:if="${#fields.hasErrors('diameter'}" th:errors="*{diameter}">error de diametro</p> -->
         <p>
-            Peso (en gramos): <input type="number" step="any" name="weight">
+            Peso (en g): <input type="number" step="0.01" min="0" name="weight">
         </p>
+    <!--    <p th:if="${#fields.hasErrors('weight'}" th:errors="*{weight}">error de peso</p> -->
 
         <p>Metal/es de los que está compuesto:</p>
-        <textarea name="metals" rows="1" cols="60">Metal 1(, metal 2, metal 3, ...)</textarea>
+        <textarea name="metals" rows="1" cols="60" placeholder="Metal 1[, metal 2, metal 3, ...]"></textarea>
 
         <p>Descripción: </p>
         <textarea name="description" rows="6" cols="60"></textarea>

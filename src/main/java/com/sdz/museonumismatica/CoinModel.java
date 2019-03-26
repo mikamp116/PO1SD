@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -20,9 +22,13 @@ public class CoinModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private float faceValue;
+    @NotNull
     private String currency;
+    @NotNull
     private float diameter; // en milimetros
+    @NotNull
     private float weight; // en gramos
     private TreeSet<String> metals;
     private String description;
@@ -46,6 +52,10 @@ public class CoinModel {
         this.metals = new TreeSet<>();
         this.metals.add(metal);
         this.description = description;
+    }
+
+    public long getId(){
+        return id;
     }
 
     public float getFaceValue() {

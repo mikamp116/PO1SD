@@ -322,7 +322,7 @@ public class ShowCoinController {
         return "/coinQueries";
     }
 
-    @RequestMapping("/modify")
+    @RequestMapping("/modifya")
     public String modify(@RequestParam Long id, Model model) {
         Coin coin = coinRepo.getOne(id);
         model.addAttribute("coin", coin);

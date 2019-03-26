@@ -8,22 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.TreeSet;
 
 @Controller
-public class AddCoinModelController {
+public class ModifyCoinModelController {
     @Autowired
-    private CoinModelRepository coinModelRepository;
+    private CoinModelRepository repo;
 
-    @RequestMapping("/coinModelAdded")
-    public String addCoinModel(CoinModel coinModel) {
+    @RequestMapping("/updateCoinModel")
+    public String updateCoinModel(@ModelAttribute CoinModel coinModel, BindingResult errors, Model model) {
 
-        coinModelRepository.save(coinModel);
+        repo.save(coinModel);
 
-        return "coinModelAdded";
-}
+        return "coinModelModified";
+    }
 }
