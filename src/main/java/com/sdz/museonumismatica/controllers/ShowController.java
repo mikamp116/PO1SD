@@ -35,8 +35,4 @@ public class ShowController {
         }
     }
 
-    @RequestMapping("/consultas/{str}")
-    public String showFromURL(@PathVariable(value= "str") String str){
-        return "show" + str;
-    }
 }

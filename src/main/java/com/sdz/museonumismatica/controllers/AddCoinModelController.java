@@ -20,7 +20,11 @@ public class AddCoinModelController {
     private CoinModelRepository coinModelRepository;
 
     @RequestMapping("/coinModelAdded")
-    public String addCoinModel(CoinModel coinModel) {
+    public String addCoinModel(@Valid @ModelAttribute CoinModel coinModel, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()){
+            return "addCoinModel";
+        }
 
         coinModelRepository.save(coinModel);
 
