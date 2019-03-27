@@ -108,32 +108,21 @@ public interface CoinRepository extends JpaRepository<Coin, Long> {
 	List<Coin> findAllByCoinModelAndSupplier(CoinModel model, Supplier supplier);
 
 	//Busqueda CoinYear And
-	List<Coin> findAllByCoinYearAndAcquisitionDate(int model, Date date);
-	List<Coin> findAllByCoinYearAndCoinLocation(int model, String location);
-	List<Coin> findAllByCoinYearAndPreservationState(int model, String state);
-	List<Coin> findAllByCoinYearAndSupplier(int model, Supplier supplier);
+	List<Coin> findAllByCoinYearAndAcquisitionDate(int year, Date date);
+	List<Coin> findAllByCoinYearAndCoinLocation(int year, String location);
+	List<Coin> findAllByCoinYearAndPreservationState(int year, String state);
+	List<Coin> findAllByCoinYearAndSupplier(int year, Supplier supplier);
 
 	//Busqueda Acquisition And
-	List<Coin> findAllByAcquisitionDateAndCoinYear(Date date, int year);
 	List<Coin> findAllByAcquisitionDateAndCoinLocation(Date date, String location);
 	List<Coin> findAllByAcquisitionDateAndPreservationState(Date date, String state);
 	List<Coin> findAllByAcquisitionDateAndSupplier(Date date, Supplier supplier);
 
 	//Busqueda Location And
-	List<Coin> findAllByCoinLocationAndCoinYear(String location, int year);
-	List<Coin> findAllByCoinLocationAndAcquisitionDate(String location, Date date);
 	List<Coin> findAllByCoinLocationAndPreservationState(String location, String state);
 	List<Coin> findAllByCoinLocationAndSupplier(String location, Supplier supplier);
 
 	//Busqueda State And
-	List<Coin> findAllByPreservationStateAndCoinYear(String state, int year);
-	List<Coin> findAllByPreservationStateAndAcquisitionDate(String state, Date date);
-	List<Coin> findAllByPreservationStateAndCoinLocation(String state, String location);
 	List<Coin> findAllByPreservationStateAndSupplier(String state, Supplier supplier);
 
-	//Busqueda Supplier And
-	List<Coin> findAllBySupplierAndCoinYear(Supplier supplier, int year);
-	List<Coin> findAllBySupplierAndAcquisitionDate(Supplier supplier, Date date);
-	List<Coin> findAllBySupplierAndCoinLocation(Supplier supplier, String location);
-	List<Coin> findAllBySupplierAndPreservationState(Supplier supplier, String state);
 }

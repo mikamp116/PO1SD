@@ -330,9 +330,11 @@ public class ShowCoinController {
         return "/coinQueries";
     }
 
-    @RequestMapping("/modifya")
-    public String modify(@RequestParam Long id, Model model) {
+    @RequestMapping("/modifyC")
+    public String modifyC(@RequestParam Long id, Model model) {
         Coin coin = coinRepo.getOne(id);
+        model.addAttribute("coinModels", coinModelRepository.findAll());
+        model.addAttribute("suppliers", supplierRepository.findAll());
         model.addAttribute("coin", coin);
         return "showCoin";
     }

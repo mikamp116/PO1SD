@@ -10,9 +10,11 @@
                     <input type="hidden" name="id" th:value="${coin.id}">
 
     <p>
-        Modelo de moneda: <select><option th:if="coinModel.id!=null" th:each="coinModel : ${coinModel}"
-                                  th:value="${coin.coinModel}" th:text="${coinModel.currency}"></option>
+        <label>
+        Modelo de moneda: <select><option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
+                                  th:value="${coinModel}" th:text="${coinModel.toString()}"></option>
         </select>
+        </label>
     </p>
     <p>
         Año: <input type="number" name="coinYear" th:value="${coin.coinYear}">
@@ -27,7 +29,11 @@
         Estado de preservación: <input type="text" name="preservationState" th:value="${coin.preservationState}">
     </p>
     <p>
-        Proveedor: <input type="" name="supplier" th:value="${coin.supplier}">
+        <label>
+        Proveedor: <select><option th:if="supplier.id!=null" th:each="supplier : ${suppliers}"
+                                   th:value="${supplier}" th:text="${supplier.toString()}"></option>
+        </select>
+        </label>
     </p>
     <input name="modify" type="submit" value="Modificar">
 </form>

@@ -126,4 +126,11 @@ public class CoinModel {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Modelo de moneda{" + "Valor monetario=" + faceValue + ", moneda='" + currency + '\'' +
+                ", diametro =" + diameter + ", peso =" + weight + ", metales =" + metals +
+                ", descripcion='" + description + '\'' + '}';
+    }
 }

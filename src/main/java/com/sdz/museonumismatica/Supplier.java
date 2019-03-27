@@ -89,4 +89,11 @@ public class Supplier {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Proveedor{" + "CIF='" + cif + '\'' + ", nombre='" + name + '\'' +
+                ", codigo postal=" + postalCode + ", e-mail='" + email + '\'' +
+                ", número de telefono=" + phoneNumber + '}';
+    }
 }

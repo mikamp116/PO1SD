@@ -9,8 +9,8 @@
     <form action="/coinAdded" method="post">
         <p>
             Modelo de moneda: <select name="coinModel">
-                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModel}"
-                        th:value="${coinModel.currency}" th:text="${coinModel.currency}"></option>
+                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModels}"
+                        th:value="${coinModel}" th:text="${coinModel}"></option>
             </select>
         </p>
         <p>
@@ -27,12 +27,13 @@
         </p>
         <p>
             Proveedor: <select name="supplier">
-            <option th:if="supplier.id != null" th:each="supplier : ${supplier}"
-                    th:value="${supplier.name}" th:text="${supplier.name}"></option>
+            <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
+                    th:value="${supplier}" th:text="${supplier}"></option>
             </select>
         </p>
         <input name="add" type="submit" value="Añadir">
     </form>
+    <br>
     Registrar nuevo modelo de moneda
     <form action="/anadir/CoinModel" method="post">
         <input name="anadir" type="submit" value="Crear">

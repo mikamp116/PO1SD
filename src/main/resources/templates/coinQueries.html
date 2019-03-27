@@ -37,17 +37,17 @@
         <br>
         <fieldset>
             <legend>Busqueda por modelo de moneda</legend>
-            <select name="queryCoinModel">
-                <option th:each="coinModel : ${coinModels}"
-                        th:value="${coinModel} " th:text="${coinModel.currency}">
+            <select name="queryC">
+                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModels}"
+                        th:value="${coinModel} " th:text="${coinModel.toString()}">
             </select>
         </fieldset>
         <br>
         <fieldset>
             <legend>Busqueda por proveedor</legend>
-            <select name="querySupplier">
+            <select name="querySP">
                 <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
-                        th:value="${supplier.name}" th:text="${supplier.name}"></option>
+                        th:value="${supplier}" th:text="${supplier.toString()}"></option>
             </select>
         </fieldset>
         <br>
@@ -59,8 +59,8 @@
                 <option value="After">Despues</option>
                 <option value="Between">Entre</option>
             </select>
-            <input name="queryYear" type="Number"><br>
-            Rellenar si se elije Entre:<input name="queryYear2" type="Number">
+            <input name="query" type="Number"><br>
+            Rellenar si se elije Entre:<input name="query2" type="Number">
         </fieldset>
         <br>
         <fieldset>
@@ -71,8 +71,8 @@
                 <option value="After">Despues</option>
                 <option value="Between">Entre</option>
             </select>
-            <input name="queryDate" type="date"><br>
-            Rellenar el siguiente si elije "Entre":<input name="queryDate2" type="date">
+            <input name="queryD" type="date"><br>
+            Rellenar el siguiente si elije "Entre":<input name="queryD2" type="date">
         </fieldset>
         <br>
         <fieldset>
@@ -82,7 +82,7 @@
         <br>
         <fieldset>
             <legend>Busqueda por localización de la moneda</legend>
-            <input name="query" type="text">
+            <input name="query2" type="text">
         </fieldset>
         <br>
         <input name="coinQuery" type="submit" value="Consultar">
@@ -91,9 +91,9 @@
 
 <h2>Ejemplares</h2>
 <p th:each="coin : ${coins}">
-    Modelo de moneda:<a th:text="${coin.coinModel.currency}"></a> ,el valor es<a th:text="${coin.coinModel.currency}"></a>
+    Modelo de moneda:<a th:text="${coin.coinModel}"></a>
     <br>
-    Proveedor:<a th:text="${coin.supplier.name}"></a>
+    Proveedor:<a th:text="${coin.supplier}"></a>
     <br>
     Año de la moneda: <a th:text="${coin.coinYear}"></a>
     <br>
@@ -102,7 +102,7 @@
     Localización de la moneda: <a th:text="${coin.coinLocation}"></a>
     <br>
     Estado de preservación: <a th:text="${coin.preservationState}"></a>
-    <a th:href="@{/modify(id=${coin.id}, coinn=${coin})}">Modificar</a>
+    <a th:href="@{/modifyC(id=${coin.id}, coinn=${coin})}">Modificar</a>
 </p>
 </body>
 </html>
