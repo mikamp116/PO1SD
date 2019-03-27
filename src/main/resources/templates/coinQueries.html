@@ -38,8 +38,8 @@
         <fieldset>
             <legend>Busqueda por modelo de moneda</legend>
             <select name="queryCoinModel">
-                <option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
-                        th:value="${coinModel.currency}" th:text="${coinModel.currency}"></option>
+                <option th:each="coinModel : ${coinModels}"
+                        th:value="${coinModel} " th:text="${coinModel.currency}">
             </select>
         </fieldset>
         <br>

@@ -27,6 +27,7 @@ public class ShowController {
             return "coinModelQueries";
         } else if (entity.equals("coin")) {
             model.addAttribute("coins", coinRepository.findAll());
+            model.addAttribute("coinModels", coinModelRepository.findAll());
             return "coinQueries";
         } else {
             model.addAttribute("suppliers", supplierRepository.findAll());

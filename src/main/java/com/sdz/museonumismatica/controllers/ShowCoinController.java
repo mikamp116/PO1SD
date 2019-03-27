@@ -6,6 +6,7 @@ import java.util.List;
 import com.sdz.museonumismatica.CoinModel;
 import com.sdz.museonumismatica.Coin;
 import com.sdz.museonumismatica.Supplier;
+import com.sdz.museonumismatica.repositories.CoinModelRepository;
 import com.sdz.museonumismatica.repositories.CoinRepository;
 import com.sdz.museonumismatica.repositories.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ShowCoinController {
     @Autowired
     private CoinRepository coinRepo;
+    @Autowired
+    private CoinModelRepository coinModelRepository;
+    @Autowired
+    private SupplierRepository supplierRepository;
 
     @RequestMapping("/coinQuery")
     public String queries(@RequestParam(value = "searchBy") String searchBy,
@@ -33,7 +38,8 @@ public class ShowCoinController {
                           Model model) {
 
         List<Coin> coins = new ArrayList<>();
-
+        List<CoinModel> coinModels = coinModelRepository.findAll();
+        List<Supplier> suppliers = supplierRepository.findAll();
         switch (searchBy) {
             case "CoinModel":
                 if (orderBy.equals("CoinModel"))
@@ -319,6 +325,8 @@ public class ShowCoinController {
                 break;
         }
         model.addAttribute("coins", coins);
+        model.addAttribute("coinModels", coinModels);
+        model.addAttribute("suppliers", suppliers);
         return "/coinQueries";
     }
 
