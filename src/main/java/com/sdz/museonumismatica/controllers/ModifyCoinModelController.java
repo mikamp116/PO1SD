@@ -9,14 +9,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class ModifyCoinModelController {
     @Autowired
     private CoinModelRepository repo;
 
     @RequestMapping("/updateCoinModel")
-    public String updateCoinModel(@ModelAttribute CoinModel coinModel, BindingResult errors, Model model) {
+    public String updateCoinModel(@Valid @ModelAttribute CoinModel coinModel, BindingResult bindingResult) {
 
+        if (bindingResult.hasErrors()){
+            return "showCoinModelToModify";
+        }
         repo.save(coinModel);
 
         return "coinModelModified";

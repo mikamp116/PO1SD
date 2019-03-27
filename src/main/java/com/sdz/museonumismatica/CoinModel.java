@@ -35,6 +35,27 @@ public class CoinModel {
 
     public CoinModel(){}
 
+    public CoinModel(long id, float faceValue, String currency, float diameter, float weight, TreeSet<String> metals, String description){
+        this.id = id;
+        this.faceValue = faceValue;
+        this.currency = currency;
+        this.diameter = diameter;
+        this.weight = weight;
+        this.metals = metals;
+        this.description = description;
+    }
+
+    public CoinModel(long id, float faceValue, String currency, float diameter, float weight, String metals, String description){
+        this.id = id;
+        this.faceValue = faceValue;
+        this.currency = currency;
+        this.diameter = diameter;
+        this.weight = weight;
+        this.metals = new TreeSet<>();
+        this.metals.add(metals);
+        this.description = description;
+    }
+
     public CoinModel(float faceValue, String currency, float diameter, float weight, TreeSet<String> metals, String description){
         this.faceValue = faceValue;
         this.currency = currency;
@@ -78,7 +99,7 @@ public class CoinModel {
         return diameter;
     }
 
-    public void setDiameter(int diameter) {
+    public void setDiameter(float diameter) {
         this.diameter = diameter;
     }
 
@@ -86,7 +107,7 @@ public class CoinModel {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 

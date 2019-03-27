@@ -6,24 +6,29 @@
 </head>
 <body>
     <h1>Modificar modelo de moneda</h1>
-    <form action ="#" th:action="@{/modifyCoinModel}" method="post" th:object="${coinModel}">
+    <form action ="#" th:action="@{/updateCoinModel}" method="post" th:object="${coinModel}">
+        <input type="hidden" th:value="*{id}">
         <p>
-            Valor facial: <input name="FaceValue" type="number" min="0" step="0.01" th:field="*{faceValue}">
+            Valor facial: <input name="FaceValue" type="text" th:field="*{faceValue}">
         </p>
+        <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}">error de valor facial</p>
         <p>
             Unidad monetaria: <input name="Currency" type="text" th:field="*{currency}">
         </p>
+        <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">error de unidad monetaria</p>
         <p>
-            Diámetro (en mm): <input name="Diameter" type="number" min="0" step="0.01" th:field="*{diameter}">
+            Diámetro (en mm): <input name="Diameter" type="text" th:field="*{diameter}">
         </p>
+        <p th:if="${#fields.hasErrors('diameter')}" th:errors="*{diameter}">error de diametro</p>
         <p>
-            Peso (en g): <input name="Weight" type="number" min="0" step="0.01" th:field="*{weight}" th>
+            Peso (en g): <input name="Weight" type="text" th:field="*{weight}">
         </p>
+        <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">error de peso</p>
         <p>
             Metal/es de los que está compuesto: <textarea name="Metals" rows="1" cols="20" th:field="*{metals}"></textarea>
         </p>
         <p>
-            Descripción: <textarea name="Description" rows="1" cols="20" th:field="*{coinModel.description}"></textarea>
+            Descripción: <textarea name="Description" rows="1" cols="20" th:field="*{description}"></textarea>
         </p>
         <input name="modify" type="submit" value="Modificar">
     </form>
