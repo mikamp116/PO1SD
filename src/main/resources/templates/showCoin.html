@@ -10,8 +10,10 @@
                     <input type="hidden" name="id" th:value="${coin.id}">
     <p>
         <label>
-        Modelo de moneda: <select><option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
-                                  th:value="${coinModel}" th:text="${coinModel.toString()}"></option>
+        Modelo de moneda: <select name="coinModel">
+            <option th:value="${coin.coinModel.id}" th:text="${coin.coinModel}">
+            <option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
+                    th:value="${coinModel.id}" th:text="${coinModel}"></option>
         </select>
         </label>
     </p>
@@ -29,8 +31,10 @@
     </p>
     <p>
         <label>
-        Proveedor: <select><option th:if="supplier.id!=null" th:each="supplier : ${suppliers}"
-                                   th:value="${supplier}" th:text="${supplier.toString()}"></option>
+        Proveedor: <select name="supplier">
+            <option th:value="${coin.supplier.id}" th:text="${coin.supplier}">
+            <option th:if="supplier.id!=null" th:each="supplier : ${suppliers}"
+                    th:value="${supplier.id}" th:text="${supplier}"></option>
         </select>
         </label>
     </p>

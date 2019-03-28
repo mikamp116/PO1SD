@@ -24,12 +24,14 @@ public class AddCoinController {
     private SupplierRepository supplierRepository;
 
     @RequestMapping("/ejemplarAnnadido")
-    public String addCoin(@RequestParam(value = "coinModel") CoinModel coinModel,
+    public String addCoin(@RequestParam(value = "coinModel") long coinModelID,
                           @RequestParam(value = "coinYear") int cYear,
                           @RequestParam(value = "acquisitionDate") Date acqDate,
                           @RequestParam(value = "coinLocation") String cLocation,
                           @RequestParam(value = "preservationState") String preState,
-                          @RequestParam(value = "supplier") Supplier sup, Model model) {
+                          @RequestParam(value = "supplier") long supID, Model model) {
+        CoinModel coinModel = coinModelRepository.getOne(coinModelID);
+        Supplier sup = supplierRepository.getOne(supID);
         Coin coin = new Coin(coinModel, cYear, cLocation, acqDate, preState, sup);
         coinRepository.save(coin);
         model.addAttribute("coin", coin);
@@ -46,9 +48,22 @@ public class AddCoinController {
     }
 
     @RequestMapping("/ejemplarModificado")
-    public String modifySupplier(Coin coin, Model model) {
-        model.addAttribute("coin", coin);
-        coinRepository.save(coin);
+    public String modifySupplier(Coin coin, @RequestParam(value = "coinModel") long coinModelID,
+                                 @RequestParam(value = "coinYear") int cYear,
+                                 @RequestParam(value = "acquisitionDate") Date acqDate,
+                                 @RequestParam(value = "coinLocation") String cLocation,
+                                 @RequestParam(value = "preservationState") String preState,
+                                 @RequestParam(value = "supplier") long supID, Model model) {
+        CoinModel coinModel = coinModelRepository.getOne(coinModelID);
+        Supplier sup = supplierRepository.getOne(supID);
+
+        Coin newCoin = coinRepository.getOne(coin.getId());
+        newCoin.setCoinModel(coinModel); newCoin.setSupplier(sup);
+        newCoin.setCoinYear(cYear); newCoin.setAcquisitionDate(acqDate);
+        newCoin.setCoinLocation(cLocation); newCoin.setPreservationState(preState);
+
+        model.addAttribute("coin", newCoin);
+        coinRepository.save(newCoin);
         return "coinModified";
     }
 }

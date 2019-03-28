@@ -8,13 +8,13 @@
     <h1>Añadir ejemplar de moneda</h1>
     <form action="/ejemplarAnnadido" method="post">
         <p>
-            Modelo de moneda: <select name="coinModel" th:type="CoinModel">
+            Modelo de moneda: <select name="coinModel">
                 <option th:if="coinModel.id != null" th:each="coinModel : ${coinModels}"
-                        th:value="${coinModel}" th:type="CoinModel" th:text="${coinModel}"></option>
+                        th:value="${coinModel.id}" th:text="${coinModel}"></option>
             </select>
         </p>
         <p>
-            Año: <input type="number" name="coinYearr">
+            Año: <input type="number" name="coinYear">
         </p>
         <p>
             Localizacion: <input type="text" name="coinLocation">
@@ -28,7 +28,7 @@
         <p>
             Proveedor: <select name="supplier">
             <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
-                    th:value="${supplier}" th:type="CoinModel" th:text="${supplier}"></option>
+                    th:value="${supplier.id}" th:text="${supplier}"></option>
             </select>
         </p>
         <input name="add" type="submit" value="Añadir">

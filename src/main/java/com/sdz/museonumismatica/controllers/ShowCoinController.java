@@ -31,16 +31,17 @@ public class ShowCoinController {
                           @RequestParam(value = "order") String order,
                           @RequestParam(value = "query") String query,
                           @RequestParam(value = "query2") String query2,
-                          @RequestParam(value = "queryC") CoinModel queryCoin,
+                          @RequestParam(value = "queryC") long queryCoinID,
                           @RequestParam(value = "queryD") Date queryDate,
                           @RequestParam(value = "queryD2") Date queryDate2,
-                          @RequestParam(value = "querySP") Supplier querySupplier,
+                          @RequestParam(value = "querySP") long querySupplierID,
                           Model model) {
 
         List<Coin> coins = new ArrayList<>();
 
         switch (searchBy) {
             case "CoinModel":
+                CoinModel queryCoin = coinModelRepository.getOne(queryCoinID);
                 if (orderBy.equals("CoinModel"))
                     coins = coinRepo.findAllByCoinModel(queryCoin);
                 else
@@ -292,6 +293,7 @@ public class ShowCoinController {
                     }
                 break;
             case "Supplier":
+                Supplier querySupplier = supplierRepository.getOne(querySupplierID);
                 if (orderBy.equals("Supplier"))
                     coins = coinRepo.findAllBySupplier(querySupplier);
                 else
