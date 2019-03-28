@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
 </head>
 <body>
     <p>Ejemplar de moneda añadida con éxito</p>
+    <br>
+    <a th:text="${coin}"></a><br>
+    <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">Modificar</a>
     <p>
         <a href="/addCoin">Añadir otra</a>
     </p>
     <p>
-        <a href="/">Volver</a>
+        <a href="/">Volver al inicio</a>
     </p>
 </body>
 </html>

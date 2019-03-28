@@ -89,20 +89,14 @@
     </fieldset>
 </form>
 
+<form action="/todosLosEjemplares" method="post">
+    <input name="consultar" type="submit" value="Mostrar Todos">
+</form>
+
 <h2>Ejemplares</h2>
 <p th:each="coin : ${coins}">
-    Modelo de moneda:<a th:text="${coin.coinModel}"></a>
-    <br>
-    Proveedor:<a th:text="${coin.supplier}"></a>
-    <br>
-    Año de la moneda: <a th:text="${coin.coinYear}"></a>
-    <br>
-    Fecha de adquisición: <a th:text="${coin.acquisitionDate}"></a>
-    <br>
-    Localización de la moneda: <a th:text="${coin.coinLocation}"></a>
-    <br>
-    Estado de preservación: <a th:text="${coin.preservationState}"></a>
-    <a th:href="@{/modifyC(id=${coin.id}, coinn=${coin})}">Modificar</a>
+    <a th:text="${coin}"></a>
+    <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">Modificar</a>
 </p>
 </body>
 </html>

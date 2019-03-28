@@ -106,4 +106,12 @@ public class Coin {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
+
+	@Override
+	public String toString() {
+		return "Ejemplar{" +
+				"Modelo de moneda=" + coinModel.toString() +
+				"\nAño = " + coinYear + "/ Localizacion = " + coinLocation + "/ Fecha de adquisición =" + acquisitionDate + "/ Estado de preservación ='" + preservationState +
+				"\n Proveedor=" + supplier.toString() + '}';
+	}
 }

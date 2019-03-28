@@ -5,10 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Modificar proveedor</h1>
-<form action="/modifyCoin" method="post">
+<h1>Modificar ejemplar</h1>
+<form action="/ejemplarModificado" method="post">
                     <input type="hidden" name="id" th:value="${coin.id}">
-
     <p>
         <label>
         Modelo de moneda: <select><option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"

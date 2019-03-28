@@ -101,11 +101,24 @@ public interface CoinRepository extends JpaRepository<Coin, Long> {
 	List<Coin> findAllBySupplierOrderByPreservationStateAsc(Supplier supplier);
 
 	//Busqueda CoinModel And
-	List<Coin> findAllByCoinModelAndCoinYear(CoinModel model, int year);
-	List<Coin> findAllByCoinModelAndAcquisitionDate(CoinModel model, Date date);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByCoinYearDesc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByCoinYearAsc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByAcquisitionDateDesc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByAcquisitionDateAsc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByCoinLocationDesc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByCoinLocationAsc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByPreservationStateDesc(CoinModel model, int year);
+	List<Coin> findAllByCoinModelAndCoinYearOrderByPreservationStateAsc(CoinModel model, int year);
+
+	List<Coin> findAllByCoinModelAndAcquisitionDateOrderByCoinYearDesc(CoinModel model, Date date);
+	List<Coin> findAllByCoinModelAndAcquisitionDateOrderByCoinYearAsc(CoinModel model, Date date);
+
 	List<Coin> findAllByCoinModelAndCoinLocation(CoinModel model, String location);
+
 	List<Coin> findAllByCoinModelAndPreservationState(CoinModel model, String state);
+
 	List<Coin> findAllByCoinModelAndSupplier(CoinModel model, Supplier supplier);
+
 
 	//Busqueda CoinYear And
 	List<Coin> findAllByCoinYearAndAcquisitionDate(int year, Date date);

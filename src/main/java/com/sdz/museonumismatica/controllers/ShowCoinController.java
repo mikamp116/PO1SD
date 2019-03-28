@@ -38,8 +38,7 @@ public class ShowCoinController {
                           Model model) {
 
         List<Coin> coins = new ArrayList<>();
-        List<CoinModel> coinModels = coinModelRepository.findAll();
-        List<Supplier> suppliers = supplierRepository.findAll();
+
         switch (searchBy) {
             case "CoinModel":
                 if (orderBy.equals("CoinModel"))
@@ -324,18 +323,18 @@ public class ShowCoinController {
                     }
                 break;
         }
+        model.addAttribute("coinModels", coinModelRepository.findAll());
+        model.addAttribute("suppliers", supplierRepository.findAll());
         model.addAttribute("coins", coins);
-        model.addAttribute("coinModels", coinModels);
-        model.addAttribute("suppliers", suppliers);
         return "/coinQueries";
     }
 
-    @RequestMapping("/modifyC")
-    public String modifyC(@RequestParam Long id, Model model) {
-        Coin coin = coinRepo.getOne(id);
+    @RequestMapping("/todosLosEjemplares")
+    public String showAll(Model model) {
         model.addAttribute("coinModels", coinModelRepository.findAll());
         model.addAttribute("suppliers", supplierRepository.findAll());
-        model.addAttribute("coin", coin);
-        return "showCoin";
+        model.addAttribute("coins", coinRepo.findAll());
+        return "/coinQueries";
     }
+
 }
