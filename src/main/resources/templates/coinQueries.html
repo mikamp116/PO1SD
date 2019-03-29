@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>Museo DB</title>
 </head>
-<body>
-
-<h1>Consultas</h1>
-<form action="/coinQuery" method="post">
-    <fieldset>
-        <legend>Filtros</legend>
+<h1>Consultas de ejemplares</h1>
+    <form action="/ejemplarConsultaPorModelo" method="post">
+        <fieldset>
+            <legend>Busqueda por modelo de moneda</legend>
         Ordenar por
         <select name="orderBy">
+            <option value="None">Sin ordenar</option>
             <option value="CoinYear">Año</option>
             <option value="AcquisitionDate">Año de adquisición</option>
             <option value="CoinLocation">Localización de la moneda</option>
@@ -21,77 +20,146 @@
         <select name="order">
             <option value="Asc">Ascendente</option>
             <option value="Desc">Descendente</option>
+        </select><br>
+        Modelo: <select name="queryC">
+            <option th:each="coinModel : ${coinModels}" th:if="coinModel.id != null"
+                    th:text="${coinModel.toString()}" th:value="${coinModel.id} ">
         </select>
+        <input name="ejemplarConsultaPorModelo" type="submit" value="Consultar">
     </fieldset>
-    <fieldset>
-        <legend>Consultas</legend>
-        Selecciona una opción y después rellena los campos de dicha opción.<br>
-        Buscar por: <select name="searchBy">
-        <option value="CoinModel">modelo de moneda</option>
-        <option value="Supplier">proveedor</option>
-        <option value="CoinYear">año de la moneda</option>
-        <option value="AcquisitionDate">fecha de adquisición</option>
-        <option value="CoinLocation">localización de la moneda</option>
-        <option value="PreservationState">estado de preseración</option>
-    </select>
-        <br>
-        <fieldset>
-            <legend>Busqueda por modelo de moneda</legend>
-            <select name="queryC">
-                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModels}"
-                        th:value="${coinModel.id} " th:text="${coinModel.toString()}">
-            </select>
-        </fieldset>
-        <br>
+    </form><br>
+    <form action="/ejemplarConsultaPorProveedor" method="post">
         <fieldset>
             <legend>Busqueda por proveedor</legend>
-            <select name="querySP">
-                <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
-                        th:value="${supplier.id}" th:text="${supplier.toString()}"></option>
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select><br>
+            Proveedor: <select name="querySP">
+                <option th:each="supplier : ${suppliers}" th:if="supplier.id != null"
+                        th:text="${supplier.toString()}" th:value="${supplier.id}"></option>
+                <input name="ejemplarConsultaPorProveedor" type="submit" value="Consultar">
             </select>
         </fieldset>
-        <br>
+    </form><br>
+    <form action="/ejemplarConsultaPorAño" method="post">
         <fieldset>
             <legend>Busqueda por año de la moneda</legend>
-            <select name="time">
-                <option value="None">Buscar y ordenar por año</option>
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select><br>
+            Año: <select name="time">
+                <option value="Same">Coincide</option>
                 <option value="Before">Antes</option>
                 <option value="After">Despues</option>
-                <option value="Between">Entre</option>
             </select>
-            <input name="query" type="Number"><br>
-            Rellenar si se elije Entre:<input name="query2" type="Number">
+            <input name="queryY" type="Number">
+            <input name="ejemplarConsultaPorAño" type="submit" value="Consultar">
         </fieldset>
-        <br>
+    </form><br>
+    <form action="/ejemplarConsultaPorFecha" method="post">
         <fieldset>
             <legend>Busqueda por fecha de adquisición</legend>
-            <select name="time">
-                <option value="None">Buscar y ordenar por fecha</option>
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select><br>
+            Fecha: <select name="time">
+                <option value="Same">Coincide</option>
                 <option value="Before">Antes</option>
                 <option value="After">Despues</option>
-                <option value="Between">Entre</option>
             </select>
-            <input name="queryD" type="date" placeholder="0000-00-00"><br>
-            Rellenar el siguiente si elije "Entre":<input name="queryD2" type="date" placeholder="0000-00-00">
+            <input name="queryD" type="date" value="1990-01-01">
+            <input name="ejemplarConsultaPorFecha" type="submit" value="Consultar">
         </fieldset>
-        <br>
+    </form><br>
+    <form action="/ejemplarConsultaPorEstado" method="post">
         <fieldset>
             <legend>Busqueda por estado de la moneda</legend>
-            <input name="query" type="text">
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select><br>
+            Estado: <input name="query" type="text">
+            <input name="ejemplarConsultaPorEstado" type="submit" value="Consultar">
         </fieldset>
-        <br>
+    </form><br>
+    <form action="/ejemplarConsultaPorLocalizacion" method="post">
         <fieldset>
             <legend>Busqueda por localización de la moneda</legend>
-            <input name="query2" type="text">
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select><br>
+            Localización: <input name="query" type="text">
+            <input name="ejemplarConsultaPorLocalizacion" type="submit" value="Consultar">
         </fieldset>
-        <br>
-        <input name="coinQuery" type="submit" value="Consultar">
-    </fieldset>
-</form>
-
-<form action="/todosLosEjemplares" method="post">
-    <input name="consultar" type="submit" value="Mostrar Todos">
-</form>
+        </form><br>
+    <form action="/todosLosEjemplares" method="post">
+        <fieldset>
+            <legend>Mostrar todos los ejemplares</legend>
+            Ordenar por
+            <select name="orderBy">
+                <option value="None">Sin ordenar</option>
+                <option value="CoinYear">Año</option>
+                <option value="AcquisitionDate">Año de adquisición</option>
+                <option value="CoinLocation">Localización de la moneda</option>
+                <option value="PreservationState">Estado de preservación</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select>
+                <input name="consultar" type="submit" value="Mostrar Todos">
+        </fieldset>
+    </form><br>
 
 <h2>Ejemplares</h2>
 <p th:each="coin : ${coins}">
