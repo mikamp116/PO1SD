@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
+    <link href="css/add.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Añadir ejemplar de moneda</h1>
-    <form action="/ejemplarAnnadido" method="post">
-        <p>
-            Modelo de moneda: <select name="coinModel">
-                <option th:if="coinModel.id != null" th:each="coinModel : ${coinModels}"
-                        th:value="${coinModel.id}" th:text="${coinModel}"></option>
-            </select>
-        </p>
-        <p>
-            Año: <input type="number" name="coinYear">
-        </p>
-        <p>
-            Localizacion: <input type="text" name="coinLocation">
-        </p>
-        <p>
-            Año de adquisición: <input type="date" name="acquisitionDate">
-        </p>
-        <p>
-            Estado de preservacion: <input type= "text" name= "preservationState">
-        </p>
-        <p>
-            Proveedor: <select name="supplier">
-            <option th:if="supplier.id != null" th:each="supplier : ${suppliers}"
-                    th:value="${supplier.id}" th:text="${supplier}"></option>
-            </select>
-        </p>
-        <input name="add" type="submit" value="Añadir">
-    </form>
-    <br>
-    Registrar nuevo modelo de moneda
-    <form action="/anadir/CoinModel" method="post">
-        <input name="anadir" type="submit" value="Crear">
-    </form>
-    Registrar nuevo proveedor
-    <form action="/anadir/Supplier" method="post">
-        <input name="anadir" type="submit" value="Crear">
-    </form>
+<h1>AÑADIR EJEMPLAR DE MONEDA</h1>
+<div id="contenedor">
+    <div id="crear">
+        <form action="/ejemplarAnnadido" method="post">
+            <fieldset>
+                <p>Modelo de moneda: <select name="coinModel">
+                    <option th:each="coinModel : ${coinModels}" th:if="coinModel.id != null"
+                            th:text="${coinModel}" th:value="${coinModel.id}"></option>
+                </select></p>
+                <p>Año: <input name="coinYear" type="number"></p>
+                <p>Localizacion: <input name="coinLocation" type="text"></p>
+                <p>Año de adquisición: <input name="acquisitionDate" type="date"></p>
+                <p>Estado de preservacion: <input name="preservationState" type="text"></p>
+                <p>Proveedor: <select name="supplier">
+                    <option th:each="supplier : ${suppliers}" th:if="supplier.id != null"
+                            th:text="${supplier}" th:value="${supplier.id}"></option>
+                </select></p>
+                <input name="add" type="submit" value="Añadir">
+            </fieldset>
+        </form>
+        <br>
+        <div id="nuevo1">
+            <form action="/anadir" method="post">
+                <fieldset>
+                    <legend>Añadir otro</legend>
+                    <select name="entities">
+                        <option value="coinModel">Modelo de moneda</option>
+                        <option value="supplier">Proveedor</option>
+                    </select>
+                    <input name="anadir" type="submit" value="Añadir">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

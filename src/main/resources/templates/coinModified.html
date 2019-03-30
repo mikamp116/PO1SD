@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
+    <link href="css/add.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<p>Moneda modificada con éxito</p>
-<br>
-<a th:text="${coin}"></a><br>
-<a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">Modificar</a>
-<p>
-    <a href="/">Volver al inicio</a>
-</p>
+<div id="contenedor">
+    <p>Su ejemplar de moneda ha sido modificado con éxito</p>
+    <fieldset>
+        Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>
+        Proveedor: <a th:text="${coin.supplier}"></a><br>
+        Año de la moneda: <a th:text="${coin.coinYear}"></a><br>
+        Fecha de adquisicion: <a th:text="${coin.acquisitionDate}"></a><br>
+        Localización: <a th:text="${coin.coinLocation}"></a><br>
+        Estado de preservación: <a th:text="${coin.preservationState}"></a><br></fieldset>
+    <p>Si quiere cambiar algo de nuevo pulse <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">aquí</a><p>
+    <form action="/anadir" method="post">
+        <fieldset>
+            <legend>Consultar algo más</legend>
+            <select name="entities">
+                <option value="coin">Ejemplar (volver atrás)</option>
+                <option value="coinModel">Modelo de moneda</option>
+                <option value="supplier">Proveedor</option>
+            </select>
+            <input name="anadir" type="submit" value="Añadir">
+        </fieldset>
+    </form>
+    <p>Si quiere volver al inicio pulse <a href="/">aqui</a></p>
+</div>
 </body>
 </html>

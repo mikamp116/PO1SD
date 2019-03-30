@@ -109,9 +109,11 @@ public class Coin {
 
 	@Override
 	public String toString() {
-		return "Ejemplar{" +
-				"Modelo de moneda=" + coinModel.toString() +
-				"\nAño = " + coinYear + "/ Localizacion = " + coinLocation + "/ Fecha de adquisición =" + acquisitionDate + "/ Estado de preservación ='" + preservationState +
-				"\n Proveedor=" + supplier.toString() + '}';
+		return "Modelo de moneda :" + coinModel.toString() +
+				", Año : " + coinYear +
+				", Localizacion = " + coinLocation +
+				", Fecha de adquisición = " + acquisitionDate +
+				", Estado de preservación = " + preservationState +
+				", Proveedor = " + supplier.toString();
 	}
 }
