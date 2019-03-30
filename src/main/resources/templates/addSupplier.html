@@ -8,22 +8,25 @@
     <h1>Añadir proveedor</h1>
     <form action="/supplierAdded" method="post">
         <p>
-            Código de Identificación Fiscal: <input type="text" name="cif">
+            Código de Identificación Fiscal: <input type="text" name="cif" required>
         </p>
         <p>
-            Nombre: <input type="text" name="name">
+            Nombre: <input type="text" name="name" required>
         </p>
         <p>
-            Dirección postal: <input type="number" name="postalCode">
+            Dirección postal: <input type="number" name="postalCode" required>
         </p>
         <p>
-            Email: <input type="email" name="email">
+            Email: <input type="email" name="email" required>
         </p>
         <p>
-            Teléfono de contacto: <input type="number" name="phoneNumber">
+            Teléfono de contacto: <input type="number" name="phoneNumber" required>
         </p>
 
         <input name="add" type="submit" value="Añadir">
+        <p>
+            <input type="button" href="/" value="Volver">
+        </p>
     </form>
 </body>
 </html>

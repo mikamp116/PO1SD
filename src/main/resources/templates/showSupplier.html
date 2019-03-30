@@ -6,25 +6,25 @@
 </head>
 <body>
 <h1>Modificar proveedor</h1>
-    <form action="/modifySupplier" method="post">
-                    <input type="hidden" name="id" th:value="${supplier.id}">
-        <p>
-            Código de Identificación Fiscal: <input type="text" name="cif" th:value="${supplier.cif}">
-        </p>
-        <p>
-            Nombre: <input type="text" name="name" th:value="${supplier.name}">
-        </p>
-        <p>
-            Dirección postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}">
-        </p>
-        <p>
-            Email: <input type="email" name="email" th:value="${supplier.email}">
-        </p>
-        <p>
-            Teléfono de contacto: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}">
-        </p>
-        <input name="modify" type="submit" value="Modificar">
-    </form>
+<form action="/modifySupplier" method="post">
+    <input type="hidden" name="id" th:value="${supplier.id}">
+    <p>
+        Código de Identificación Fiscal: <input type="text" name="cif" th:value="${supplier.cif}" required>
+    </p>
+    <p>
+        Nombre: <input type="text" name="name" th:value="${supplier.name}" required>
+    </p>
+    <p>
+        Dirección postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}" required>
+    </p>
+    <p>
+        Email: <input type="email" name="email" th:value="${supplier.email}" required>
+    </p>
+    <p>
+        Teléfono de contacto: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}" required>
+    </p>
+    <input name="modify" type="submit" value="Modificar">
+</form>
 
 
 </body>
