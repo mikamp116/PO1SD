@@ -1,5 +1,5 @@
 #contenedor {
-    width:  900px;
+    width:  30%;
     height: 700px;
     margin: 0 auto;
 }
@@ -24,9 +24,18 @@
     float: left;
 }
 
+select{
+    border-radius: 10px;
+    background-color: snow;
+}
+
+input{
+    border-radius: 10px;
+    background-color: snow;
+}
+
 
 h1{
-    /*background-color: wheat;*/
     font-size: 30px;
     font-color:#ffffff;
     margin-left: auto;
@@ -35,7 +44,6 @@ h1{
 }
 
 body {
-   /* background-color: wheat;*/
     font-size: 1em;
     font-color:#ffffff;
     font-family: 'Montserrat', sans-serif;
@@ -43,7 +51,6 @@ body {
 
 fieldset
 {
-    /*background-color:#CCC;*/
     max-width:500px;
     padding:16px;
     border:2px solid black;
