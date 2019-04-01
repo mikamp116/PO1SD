@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
-    <link href="/css/coinQuery.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,9 +12,9 @@
         <span class="site-desc">Consultas de ejemplares</span>
     </a>
 </header>
-<div id="contenedor">
+<div id="contenedor2">
     <div id="dual">
-        <form action="/ejemplarConsulta" method="post">
+        <form action="/coinQuery" method="post">
             <fieldset>
                 <legend>Filtros</legend>
                 Ordenar por
@@ -49,11 +48,11 @@
             </select><br><br>
                 Modelo de moneda: <select name="queryC">
                 <option th:each="coinModel : ${coinModels}" th:if="coinModel.id != null"
-                        th:text="${coinModel.toString()}" th:value="${coinModel.id} ">
+                        th:text="${coinModel}" th:value="${coinModel.id} ">
             </select><br><br>
                 Proveedor:<select name="querySP">
                 <option th:each="supplier : ${suppliers}" th:if="supplier.id != null"
-                        th:text="${supplier.toString()}" th:value="${supplier.id}"></option>
+                        th:text="${supplier}" th:value="${supplier.id}"></option>
             </select><br><br>
                 Año de la moneda:Fecha: <select name="time">
                 <option value="Same">Coincide</option>
@@ -73,10 +72,13 @@
         </form>
         <br>
     </div>
-    <form action="/todosLosEjemplares" method="post">
+    <form action="/allCoins" method="post">
         <input name="consultar" type="submit" value="Mostrar Todos">
     </form>
     <br>
+    <form action="/">
+        <input type="submit" value="Volver" />
+    </form>
 </div>
 <div id="ejemplares">
     <h2>Ejemplares</h2>
@@ -87,7 +89,7 @@
         <b>Fecha de adquisicion: </b><a th:text="${coin.acquisitionDate}"></a><br>
         <b>Localización: </b><a th:text="${coin.coinLocation}"></a><br>
         <b>Estado de preservación: </b><a th:text="${coin.preservationState}"></a><br>
-        <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">Modificar</a><br>
+        <a th:href="@{/coinModify(id=${coin.id}, coinn=${coin})}">Modificar</a><br>
     </p>
 </div>
 </body>

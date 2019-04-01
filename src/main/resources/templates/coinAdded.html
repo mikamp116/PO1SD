@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
-    <link href="/css/add.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -22,7 +21,7 @@
         Localización: <a th:text="${coin.coinLocation}"></a><br>
         Estado de preservación: <a th:text="${coin.preservationState}"></a><br></fieldset>
     <p>Si quiere cambiar algo pulse <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">aqui</a><p>
-    <form action="/anadir" method="post">
+    <form action="/add" method="post">
         <fieldset>
             <legend>Añadir otro nuevo</legend>
             <select name="entities">
@@ -33,7 +32,9 @@
             <input name="anadir" type="submit" value="Añadir">
         </fieldset>
     </form>
-    <p>Si quiere volver al inicio pulse <a href="/">aqui</a></p>
+    <form action="/">
+        <input type="submit" value="Volver al inicio" />
+    </form>
 </div>
 </body>
 </html>

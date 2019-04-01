@@ -19,7 +19,7 @@ public class ShowController {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @RequestMapping("/consultas")
+    @RequestMapping("/query")
     public String show(@RequestParam("entities") String entity, Model model) {
 
         if (entity.equals("coinModel")) {

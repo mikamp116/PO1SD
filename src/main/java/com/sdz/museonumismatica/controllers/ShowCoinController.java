@@ -26,7 +26,8 @@ public class ShowCoinController {
     private SupplierRepository supplierRepository;
     List<Coin> coins = new ArrayList<>();
 
-    @RequestMapping("/ejemplarConsulta")
+    //Muestra los coin usando diferentes criterios
+    @RequestMapping("/coinQuery")
     public String consultaDual(@RequestParam(value = "value1") String value1, @RequestParam(value = "value2") String value2,
                                @RequestParam(value = "orderBy") String orderBy, @RequestParam(value = "order") String order,
                                @RequestParam(value = "time") String time, @RequestParam(value = "time2") String time2,
@@ -35,11 +36,11 @@ public class ShowCoinController {
                                @RequestParam(value = "query") String query, @RequestParam(value = "query2") String query2, Model model) {
         CoinModel queryCoin = coinModelRepository.getOne(queryCoinID);
         Supplier querySupplier = supplierRepository.getOne(querySupplierID);
-        switch (orderBy) {
+        switch (orderBy) { //Ordenar por
             case "CoinYear":
-                switch (value1) {
+                switch (value1) { //Primer valor
                     case "CoinModel":
-                        switch (value2) {
+                        switch (value2) { //Segundo valor
                             case "CoinModel":
                                 if (order.equals("Asc"))
                                     coins = coinRepo.findAllByCoinModelOrderByCoinYearAsc(queryCoin);
@@ -2564,7 +2565,8 @@ public class ShowCoinController {
         return "/coinQueries";
     }
 
-    @RequestMapping("/todosLosEjemplares")
+    //Muestra todos los coins que se encuentran en la base de datos
+    @RequestMapping("/allCoins")
     public String showAll(Model model) {
         model.addAttribute("coinModels", coinModelRepository.findAll());
         model.addAttribute("suppliers", supplierRepository.findAll());
