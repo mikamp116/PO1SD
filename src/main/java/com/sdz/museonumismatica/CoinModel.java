@@ -1,10 +1,12 @@
 package com.sdz.museonumismatica;
 
+import com.sdz.museonumismatica.utility.FloatConstraint;
+import com.sdz.museonumismatica.utility.SetToStringConverter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.TreeSet;
@@ -22,14 +24,18 @@ public class CoinModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
+    @NotNull(message = "Por favor, introduzca un valor no nulo")
+    @FloatConstraint
     private float faceValue;
     @NotNull
     private String currency;
     @NotNull
+    @FloatConstraint
     private float diameter; // en milimetros
     @NotNull
+    @FloatConstraint
     private float weight; // en gramos
+    @NotNull
     private TreeSet<String> metals;
     private String description;
 
@@ -79,6 +85,8 @@ public class CoinModel {
         return id;
     }
 
+    public void setId(long id) { this.id = id;}
+
     public float getFaceValue() {
         return faceValue;
     }
@@ -127,10 +135,11 @@ public class CoinModel {
         this.description = description;
     }
 
+
     @Override
     public String toString() {
-        return "Modelo de moneda{" + "Valor monetario=" + faceValue + ", moneda='" + currency + '\'' +
-                ", diametro =" + diameter + ", peso =" + weight + ", metales =" + metals +
-                ", descripcion='" + description + '\'' + '}';
+        SetToStringConverter setToStringConverter = new SetToStringConverter();
+        return "Valor facial = " + faceValue + " | Divisa = " + currency +
+                " | Diametro = " + diameter + " | Peso = " + weight + " | Metales = " + setToStringConverter.convert(metals);
     }
 }
