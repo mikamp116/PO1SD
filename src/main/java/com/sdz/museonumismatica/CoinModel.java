@@ -139,7 +139,7 @@ public class CoinModel {
     @Override
     public String toString() {
         SetToStringConverter setToStringConverter = new SetToStringConverter();
-        return "Valor facial = " + faceValue + " | Divisa = " + currency +
-                " | Diametro = " + diameter + " | Peso = " + weight + " | Metales = " + setToStringConverter.convert(metals);
+        return "Valor facial: " + faceValue + " | Divisa: " + currency +
+                " | Diámetro: " + diameter + " | Peso: " + weight + " | Metales: " + setToStringConverter.convert(metals);
     }
 }

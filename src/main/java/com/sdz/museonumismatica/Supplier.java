@@ -92,8 +92,7 @@ public class Supplier {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "CIF='" + cif + '\'' + ", nombre='" + name + '\'' +
-                ", codigo postal=" + postalCode + ", e-mail='" + email + '\'' +
-                ", número de telefono=" + phoneNumber + '}';
+        return "CIF: " + cif + " | Nombre: " + name + " | Código postal: " + postalCode + " | Email: " + email +
+                " | Número de teléfono: " + phoneNumber;
     }
 }
