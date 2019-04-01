@@ -17,7 +17,7 @@ public class ModifyCoinModelController {
     private CoinModelRepository repo;
 
     @RequestMapping("/updateCoinModel")
-    public String updateCoinModel(@Valid @ModelAttribute CoinModel coinModel, BindingResult bindingResult) {
+    public String updateCoinModel(@Valid @ModelAttribute("coinModel") CoinModel coinModel, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()){
             return "showCoinModelToModify";
