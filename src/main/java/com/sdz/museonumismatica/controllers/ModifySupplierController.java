@@ -14,7 +14,17 @@ public class ModifySupplierController {
 
     @RequestMapping("/modifySupplier")
     public String modifySupplier(Supplier supplier, Model model) {
+        Supplier s_ref = supplierRepository.getOne(supplier.getId());
+        Supplier supplier_before = new Supplier(s_ref.getCif(), s_ref.getName(), s_ref.getPostalCode(), s_ref.getEmail(), s_ref.getPhoneNumber());
+        model.addAttribute("supplier_b", supplier_before);
         supplierRepository.save(supplier);
+        model.addAttribute("supplier", supplier);
         return "supplierModified";
+    }
+
+    @RequestMapping("/backFromModifySupplierToSupplierQuery")
+    public String back(Model model) {
+        model.addAttribute("suppliers", supplierRepository.findAll());
+        return "supplierQueries";
     }
 }

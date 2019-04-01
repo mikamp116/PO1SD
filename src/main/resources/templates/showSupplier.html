@@ -15,15 +15,19 @@
         Nombre: <input type="text" name="name" th:value="${supplier.name}" required>
     </p>
     <p>
-        Dirección postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}" required>
+        Código postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}" required>
     </p>
     <p>
-        Email: <input type="email" name="email" th:value="${supplier.email}" required>
+        Email: <input type="email" name="email" th:value="${supplier.email}" placeholder="email@example.com" required>
     </p>
     <p>
-        Teléfono de contacto: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}" required>
+        Número de teléfono: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}" required>
     </p>
     <input name="modify" type="submit" value="Modificar">
+</form>
+<br>
+<form action="/backFromModifySupplierToSupplierQuery">
+    <input type="submit" value="Cancelar" />
 </form>
 
 

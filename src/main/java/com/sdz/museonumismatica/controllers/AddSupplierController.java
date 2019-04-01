@@ -16,7 +16,13 @@ public class AddSupplierController {
     public String addSupplier(Supplier supplier, Model model) {
 
         supplierRepository.save(supplier);
+        model.addAttribute("supplier", supplier);
 
         return "supplierAdded";
+    }
+
+    @RequestMapping("/backFromAddSupplierToHome")
+    public String backFromAddSupplierToHome(Model model) {
+        return "/";
     }
 }

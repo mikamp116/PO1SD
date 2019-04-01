@@ -37,4 +37,9 @@ public class AddController {
         return "add" + str;
 
     }
+
+    @RequestMapping("/addAnotherOneSupplier")
+    public String anotherOne(Model model) {
+        return "addSupplier";
+    }
 }
