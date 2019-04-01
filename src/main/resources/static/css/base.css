@@ -1,6 +1,56 @@
 body {
+    margin: 0;
+    padding: 0;
+    padding-top: 130px; /* Relleno superior igual a la altura de la cabecera*/
     background-color: aliceblue;
     font-size: 1em;
+    line-height: 1.5em;
     font-color:#ffffff;
     font-family: 'Montserrat', sans-serif;
+}
+
+fieldset{
+    max-width:500px;
+    padding:16px;
+    border:2px solid black;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+#main-header {
+    background: black;
+    color: white;
+    height: 120px; /*Aunmentamos la altura de la cabecera*/
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+    left: 0; /* Posicionamos la cabecera al lado izquierdo */
+    top: 0; /* Posicionamos la cabecera pegada arriba */
+    position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+}
+#main-header a {
+    color: white;
+}
+
+#logo-header {
+    float: left;
+    padding: 15px 0 0 20px;
+    text-decoration: none;
+}
+#logo-header:hover {
+    color: #0b76a6;
+}
+
+#logo-header .site-name {
+    display: block;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+#logo-header .site-desc {
+    display: block;
+    font-weight: 300;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    color: #999;
 }

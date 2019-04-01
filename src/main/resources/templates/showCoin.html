@@ -7,10 +7,14 @@
     <link href="/css/add.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Modificar ejemplar</h1>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Modifique su ejemplar</span>
+    </a>
+</header>
 <div id="contenedor">
     <form action="/ejemplarModificado" method="post">
-
         <input type="hidden" name="id" th:value="${coin.id}">
         <fieldset>
             <p><b>Modelo de moneda:</b> <select name="coinModel">

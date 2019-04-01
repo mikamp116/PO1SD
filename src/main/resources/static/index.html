@@ -6,12 +6,17 @@
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>MUSEO SOLE NOVUM</h1>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Para bañarse en monedas, necesitas conocerlas</span>
+    </a>
+</header>
+
     <h2>Bienvenido a la base de datos del museo</h2>
-    <h3>Consultas</h3>
     <form action="/consultas" method="post">
         <fieldset>
-            <legend>Campos a seleccionar</legend>
+            <legend>Consultas</legend>
             <select name="entities">
                 <option value="coinModel">Modelo de moneda</option>
                 <option value="coin">Ejemplar</option>
@@ -21,10 +26,9 @@
         </fieldset>
     </form>
 
-    <h3>Añadir</h3>
     <form action="/anadir" method="post">
         <fieldset>
-            <legend>Campos a seleccionar</legend>
+            <legend>Añadir</legend>
             <select name="entities">
                 <option value="coinModel">Modelo de moneda</option>
                 <option value="coin">Ejemplar</option>
