@@ -18,15 +18,15 @@
             Ordenar por
             <select name="orderBy">
                 <option value="CIF">CIF</option>
-            <option value="Name">Nombre</option>
-            <option value="PostalCode">Codigo postal</option>
-            <option value="Email">Email</option>
-            <option value="PhoneNumber">Numero de telefono</option>
+            <option value="Name" th:selected="(${qOrderBy} == Name)">Nombre</option>
+            <option value="PostalCode" th:selected="(${qOrderBy} == PostalCode)">Codigo postal</option>
+            <option value="Email" th:selected="(${qOrderBy} == Email)">Email</option>
+            <option value="PhoneNumber" th:selected="(${qOrderBy} == PhoneNumber)">Numero de telefono</option>
             </select>
             Orden
             <select name="order">
-                <option value="Asc">Ascendente</option>
-                <option value="Desc">Descendente</option>
+                <option value="1" th:selected="(${qOrder} == 1)">Ascendente</option>
+                <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
             </select>
         </fieldset>
         </div>
@@ -34,14 +34,14 @@
         <div  id="consulta">
             <fieldset>
                 <legend>Consulta</legend>
-                <p>CIF <input name="cif" type="text">
-                    Nombre <input name="name" type="text"/>
+                <p>CIF <input name="cif" type="text" th:value="${qCIF}">
+                    Nombre <input name="name" type="text" th:value="${qName}">
                     <div class="tooltip">Email
-                        <span class="tooltiptext">Tooltip text</span> <input name="email" type="email" placeholder="email@example.com"/>
+                        <span class="tooltiptext">Tooltip text</span> <input name="email" type="email" placeholder="email@example.com" th:value="${qEmail}">
                     </div>
                 </p>
-                <p>Código postal <input name="postalCodeA" type="number"> a <input name="postalCodeB" type="number">
-                    Número de teléfono <input name="phoneNumber" type="number"></p>
+                <p>Código postal <input name="postalCodeA" type="number" th:value="${qPostalCodeA}"> a <input name="postalCodeB" type="number" th:value="${qPostalCodeB}">
+                     Número de teléfono <input name="phoneNumber" type="number" th:value="${qPhoneNumber}"></p>
             </fieldset>
         </div>
         <p>

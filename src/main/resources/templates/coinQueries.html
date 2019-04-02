@@ -19,32 +19,32 @@
                 <legend>Filtros</legend>
                 Ordenar por
                 <select name="orderBy">
-                    <option value="CoinYear">Año</option>
-                    <option value="AcquisitionDate">Año de adquisición</option>
-                    <option value="CoinLocation">Localización de la moneda</option>
-                    <option value="PreservationState">Estado de preservación</option>
+                    <option value="CoinYear" th:selected="(${qOrderBy} == CoinYear)">Año</option>
+                    <option value="AcquisitionDate" th:selected="(${qOrderBy} == AcquisitionDate)">Año de adquisición</option>
+                    <option value="CoinLocation" th:selected="(${qOrderBy} == CoinLocation)">Localización de la moneda</option>
+                    <option value="PreservationState" th:selected="(${qOrderBy} == PreservationState)">Estado de preservación</option>
                 </select>, orden
                 <select name="order">
-                    <option value="Asc">Ascendente</option>
-                    <option value="Desc">Descendente</option>
+                    <option value="1" th:selected="(${qOrder} == 1)">Ascendente</option>
+                    <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
                 </select>
             </fieldset>
             <fieldset>
                 <legend>Busqueda</legend>
                 Buscar por <select name="value1">
-                <option value="CoinModel">Modelo de moneda</option>
-                <option value="Supplier">Proveedor</option>
-                <option value="CoinYear">Año</option>
-                <option value="AcquisitionDate">Año de adquisición</option>
-                <option value="CoinLocation">Localización de la moneda</option>
-                <option value="PreservationState">Estado de preservación</option>
+                <option value="CoinModel" th:selected="(${qvalue} == CoinModel)">Modelo de moneda</option>
+                <option value="Supplier" th:selected="(${qvalue} == Supplier)">Proveedor</option>
+                <option value="CoinYear" th:selected="(${qvalue} == CoinYear)">Año</option>
+                <option value="AcquisitionDate" th:selected="(${qvalue} == AcquisitionDate)">Año de adquisición</option>
+                <option value="CoinLocation" th:selected="(${qvalue} ==CoinLocation)">Localización de la moneda</option>
+                <option value="PreservationState" th:selected="(${qvalue} == PreservationState)">Estado de preservación</option>
             </select> y <select name="value2">
-                <option value="CoinModel">Modelo de moneda</option>
-                <option value="Supplier">Proveedor</option>
-                <option value="CoinYear">Año</option>
-                <option value="AcquisitionDate">Año de adquisición</option>
-                <option value="CoinLocation">Localización de la moneda</option>
-                <option value="PreservationState">Estado de preservación</option>
+                <option value="CoinModel" th:selected="(${qvalue2} == CoinModel)">Modelo de moneda</option>
+                <option value="Supplier" th:selected="(${qvalue2} == Supplier)">Proveedor</option>
+                <option value="CoinYear" th:selected="(${qvalue2} == CoinYear)">Año</option>
+                <option value="AcquisitionDate" th:selected="(${qvalue2} == AcquisitionDate)">Año de adquisición</option>
+                <option value="CoinLocation" th:selected="(${qvalue2} ==CoinLocation)">Localización de la moneda</option>
+                <option value="PreservationState" th:selected="(${qvalue2} == PreservationState)">Estado de preservación</option>
             </select><br><br>
                 Modelo de moneda: <select name="queryC">
                 <option th:each="coinModel : ${coinModels}" th:if="coinModel.id != null"
@@ -55,18 +55,18 @@
                         th:text="${supplier}" th:value="${supplier.id}"></option>
             </select><br><br>
                 Año de la moneda:Fecha: <select name="time">
-                <option value="Same">Coincide</option>
-                <option value="Before">Antes</option>
-                <option value="After">Despues</option>
+                <option value="Same"  th:selected="(${qtime} == Same)">Coincide</option>
+                <option value="Before" th:selected="(${qtime} == Before)">Antes</option>
+                <option value="After" th:selected="(${qtime} == After)">Despues</option>
             </select>
-                <input name="queryY" type="Number" value="1990">
+                <input name="queryY" type="Number" th:value="${qqueryY}" required>
                 Fecha de adquisición: Fecha: <select name="time2">
-                <option value="Same">Coincide</option>
-                <option value="Before">Antes</option>
-                <option value="After">Despues</option>
-            </select><input name="queryD" type="date" value="1990-01-01"><br><br>
-                Localización: <input name="query" type="text">
-                Estado: <input name="query2" type="text"><br>
+                <option value="Same"  th:selected="(${qtime2} == Same)">Coincide</option>
+                <option value="Before" th:selected="(${qtime2} == Before)">Antes</option>
+                <option value="After" th:selected="(${qtime2} == After)">Despues</option>
+            </select><input name="queryD" type="date" th:value="${qqueryD}" required><br><br>
+                Localización: <input name="query" type="text" th:value="${qquery}">
+                Estado: <input name="query2" type="text" th:value="${qquery2}"><br>
                 <input name="ejemplarDual" type="submit" value="Consultar">
             </fieldset>
         </form>
@@ -83,12 +83,12 @@
 <div id="ejemplares">
     <h2>Ejemplares</h2>
     <p th:each="coin : ${coins}">
-        <b>Modelo de moneda: </b><a th:text="${coin.coinModel}"></a><br>
-        <b>Proveedor: </b><a th:text="${coin.supplier}"></a><br>
-        <b>Año de la moneda: </b><a th:text="${coin.coinYear}"></a><br>
-        <b>Fecha de adquisicion: </b><a th:text="${coin.acquisitionDate}"></a><br>
-        <b>Localización: </b><a th:text="${coin.coinLocation}"></a><br>
-        <b>Estado de preservación: </b><a th:text="${coin.preservationState}"></a><br>
+        Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>
+        Proveedor: <a th:text="${coin.supplier}"></a><br>
+        Año de la moneda: <a th:text="${coin.coinYear}"></a><br>
+        Fecha de adquisicion: <a th:text="${coin.acquisitionDate}"></a><br>
+        Localización: <a th:text="${coin.coinLocation}"></a><br>
+        Estado de preservación: <a th:text="${coin.preservationState}"></a><br>
         <a th:href="@{/coinModify(id=${coin.id}, coinn=${coin})}">Modificar</a><br>
     </p>
 </div>

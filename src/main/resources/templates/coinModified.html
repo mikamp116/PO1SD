@@ -14,13 +14,29 @@
 </header>
 <div id="contenedor">
     <fieldset>
+        <legend>Ejemplar desoués de la modificación</legend>
         Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>
         Proveedor: <a th:text="${coin.supplier}"></a><br>
         Año de la moneda: <a th:text="${coin.coinYear}"></a><br>
         Fecha de adquisicion: <a th:text="${coin.acquisitionDate}"></a><br>
         Localización: <a th:text="${coin.coinLocation}"></a><br>
-        Estado de preservación: <a th:text="${coin.preservationState}"></a><br></fieldset>
-    <p>Si quiere cambiar algo de nuevo pulse <a th:href="@{/coinModify(id=${coin.id}, coinn=${coin})}">aquí</a><p>
+        Estado de preservación: <a th:text="${coin.preservationState}"></a><br>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Ejemplar antes de la modificación</legend>
+        Modelo de moneda: <a th:text="${coin_b.coinModel}"></a><br>
+        Proveedor: <a th:text="${coin_b.supplier}"></a><br>
+        Año de la moneda: <a th:text="${coin_b.coinYear}"></a><br>
+        Fecha de adquisicion: <a th:text="${coin_b.acquisitionDate}"></a><br>
+        Localización: <a th:text="${coin_b.coinLocation}"></a><br>
+        Estado de preservación: <a th:text="${coin_b.preservationState}"></a><br>
+    </fieldset>
+
+    <p>Si quiere cambiar algo de nuevo pulse <a th:href="@{/coinModify(id=${coin.id}, coinn=${coin})}">aquí</a>
+    <p>
+
     <form action="/query" method="post">
         <fieldset>
             <legend>Consultar algo más</legend>
@@ -33,7 +49,7 @@
         </fieldset>
     </form>
     <form action="/">
-        <input type="submit" value="Volver al inicio" />
+        <input type="submit" value="Volver al inicio"/>
     </form>
 </div>
 </body>

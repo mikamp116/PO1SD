@@ -16,6 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * @author Jorge Chavero Morcillo
+ *
+ * Implementacion de mostrar ejemplares
+ */
 @Controller
 public class ShowCoinController {
     @Autowired
@@ -36,6 +41,19 @@ public class ShowCoinController {
                                @RequestParam(value = "query") String query, @RequestParam(value = "query2") String query2, Model model) {
         CoinModel queryCoin = coinModelRepository.getOne(queryCoinID);
         Supplier querySupplier = supplierRepository.getOne(querySupplierID);
+
+        //Para que la pagina recuerde lo que el usuario selecciono
+        model.addAttribute("qOrderBy", orderBy);
+        model.addAttribute("qOrder", order);
+        model.addAttribute("qvalue", value1);
+        model.addAttribute("qvalue2", value2);
+        model.addAttribute("qtime", time);
+        model.addAttribute("qtime2", time2);
+        model.addAttribute("qqueryY", queryY);
+        model.addAttribute("qqueryD", queryDate);
+        model.addAttribute("qquery", query);
+        model.addAttribute("qquery1", query2);
+
         switch (orderBy) { //Ordenar por
             case "CoinYear":
                 switch (value1) { //Primer valor

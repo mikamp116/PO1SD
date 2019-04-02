@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 
+/**
+ * @author Jorge Chavero Morcillo
+ *
+ * Implementacion de añadir ejemplares
+ */
 @Controller
 public class AddCoinController {
     @Autowired
@@ -55,22 +60,12 @@ public class AddCoinController {
 
     //ejemplar modificado
     @RequestMapping("/coinModified")
-    public String modifySupplier(Coin coin, @RequestParam(value = "coinModel") long coinModelID,
-                                 @RequestParam(value = "coinYear") int cYear,
-                                 @RequestParam(value = "acquisitionDate") Date acqDate,
-                                 @RequestParam(value = "coinLocation") String cLocation,
-                                 @RequestParam(value = "preservationState") String preState,
-                                 @RequestParam(value = "supplier") long supID, Model model) {
-        //Buscamos en los repositorios un supplier y coinModel con esas ID y los sacamos para añadirlos
-        CoinModel coinModel = coinModelRepository.getOne(coinModelID);
-        Supplier sup = supplierRepository.getOne(supID);
-        //Actualizamos todas las variables, incluso si no fueron cambiadas
+    public String modifySupplier(Coin coin, Model model) {
         Coin newCoin = coinRepository.getOne(coin.getId());
-        newCoin.setCoinModel(coinModel); newCoin.setSupplier(sup);
-        newCoin.setCoinYear(cYear); newCoin.setAcquisitionDate(acqDate);
-        newCoin.setCoinLocation(cLocation); newCoin.setPreservationState(preState);
-
-        model.addAttribute("coin", newCoin);
+        Coin oldCoin = new Coin(newCoin.getCoinModel(), newCoin.getCoinYear(), newCoin.getCoinLocation(),
+                newCoin.getAcquisitionDate(),newCoin.getPreservationState(),newCoin.getSupplier());
+        model.addAttribute("coin_b", oldCoin);
+        model.addAttribute("coin", coin);
         coinRepository.save(newCoin);
         return "coinModified";
     }
