@@ -2,57 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Museo DB</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<h1>Consultas</h1>
-<form action="/supplierQuery" method="post">
+    <h1>Consultar proveedores</h1>
 
-    <fieldset>
-        <legend>Filtros</legend>
-        Ordenar por
-        <select name="orderBy">
-            <option value="CIF">CIF</option>
-            <option value="Name">Nombre</option>
-            <option value="Postalcode">Codigo postal</option>
-            <option value="Email">Email</option>
-            <option value="Phonenumber">Numero de telefono</option>
-        </select>
-        Orden
-        <select name="order">
-            <option value="Asc">Ascendente</option>
-            <option value="Desc">Descendente</option>
-        </select>
-    </fieldset>
+    <form action="/supplierQuery" method="post">
 
-    <fieldset>
-        <legend>Consulta</legend>
-        Buscar por
-        <select name="searchBy">
-            <option value="CIF">CIF</option>
+        <div  id="filtros">
+        <fieldset>
+            <legend>Filtros</legend>
+            Ordenar por
+            <select name="orderBy">
+                <option value="CIF">CIF</option>
             <option value="Name">Nombre</option>
-            <option value="Postalcode">Codigo postal</option>
+            <option value="PostalCode">Codigo postal</option>
             <option value="Email">Email</option>
-            <option value="Phonenumber">Numero de telefono</option>
-        </select>
-            <input name="query" type="text">
+            <option value="PhoneNumber">Numero de telefono</option>
+            </select>
+            Orden
+            <select name="order">
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select>
+        </fieldset>
+        </div>
+
+        <div  id="consulta">
+            <fieldset>
+                <legend>Consulta</legend>
+                <p>CIF <input name="cif" type="text">
+                    Nombre <input name="name" type="text"/>
+                    <div class="tooltip">Email
+                        <span class="tooltiptext">Tooltip text</span> <input name="email" type="email" placeholder="email@example.com"/>
+                    </div>
+                </p>
+                <p>Código postal <input name="postalCodeA" type="number"> a <input name="postalCodeB" type="number">
+                    Número de teléfono <input name="phoneNumber" type="number"></p>
+            </fieldset>
+        </div>
+        <p>
         <input name="supplierQuery" type="submit" value="Consultar">
-    </fieldset>
+        </p>
+    </form>
+    <form action="/">
+        <input type="submit" value="Volver" />
+    </form>
 
-</form>
-
-<h2>Proveedores</h2>
-<p th:each="supplier : ${suppliers}">
-    CIF:
-    <a th:text="${supplier.cif}"></a>
-    Nombre:
-    <a th:text="${supplier.name}"></a>
-    <br>
-    <a th:text="${supplier.postalCode}"></a>
-    <a th:text="${supplier.email}"></a>
-    <a th:text="${supplier.phoneNumber}"></a>
-    <a th:href="@{/modify(id=${supplier.id}, supp=${supplier})}">Modificar</a>
-</p>
+    <h2>Proveedores</h2>
+    <p th:each="supplier : ${suppliers}">
+        CIF:
+        <a th:text="${supplier.cif}"></a>
+        Nombre:
+        <a th:text="${supplier.name}"></a>
+        <br>
+        <a th:text="${supplier.postalCode}"></a>
+        <a th:text="${supplier.email}"></a>
+        <a th:text="${supplier.phoneNumber}"></a>
+        <a th:href="@{/modify(id=${supplier.id}, supp=${supplier})}">Modificar</a>
+    </p>
 </body>
 </html>
