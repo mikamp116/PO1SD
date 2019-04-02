@@ -1,4 +1,4 @@
-h2 {
+h1, h2, h3 {
     text-align: center;
     font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }
@@ -8,8 +8,69 @@ body {
 
 }
 
-#page {
+.page {
     background-color: aliceblue;
     margin: 2% 10% 5%;
     padding: 2% 5% 2%
+}
+
+.filtros {
+    width: auto;
+}
+
+.consulta {
+    width: auto;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    font-size: 11px;
+    left: -25%;
+    margin-left: 10px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.antes {
+    float: left;
+    width: auto;
+}
+
+.despues {
+    float: left;
+    width: auto;
+}
+
+.final {
+    clear: both;
+    text-align: center;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }

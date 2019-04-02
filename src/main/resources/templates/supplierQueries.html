@@ -12,7 +12,7 @@
 
     <form action="/supplierQuery" method="post">
 
-        <div  id="filtros">
+        <div class="filtros">
         <fieldset>
             <legend>Filtros</legend>
             Ordenar por
@@ -31,17 +31,20 @@
         </fieldset>
         </div>
 
-        <div  id="consulta">
+        <div class="consulta">
             <fieldset>
                 <legend>Consulta</legend>
-                <p>CIF <input name="cif" type="text" th:value="${qCIF}">
-                    Nombre <input name="name" type="text" th:value="${qName}">
-                    <div class="tooltip">Email
-                        <span class="tooltiptext">Tooltip text</span> <input name="email" type="email" placeholder="email@example.com" th:value="${qEmail}">
-                    </div>
+                <p>CIF <input name="cif" type="text"></p>
+                <p>Nombre <input name="name" type="text"/></p>
+                <p>Email <input name="email" type="email" placeholder="email@example.com"/></p>
+                <p>
+                    <div class="tooltip">Código postal <span class="tooltiptext">
+                        Rellene el primer campo para buscar valores mayores, el segundo para valores menores, y ambos
+                        para buscar entre esos dos. Si los valores coinciden, se buscaran los que coindidan con estos.
+                    </span></div>
+                    <input name="postalCodeA" type="number"> a <input name="postalCodeB" type="number">
                 </p>
-                <p>Código postal <input name="postalCodeA" type="number" th:value="${qPostalCodeA}"> a <input name="postalCodeB" type="number" th:value="${qPostalCodeB}">
-                     Número de teléfono <input name="phoneNumber" type="number" th:value="${qPhoneNumber}"></p>
+                <p>Número de teléfono <input name="phoneNumber" type="number"></p>
             </fieldset>
         </div>
         <p>
