@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="page">
     <h3>Proveedor añadido con éxito</h3>
     <p>
-        CIF: <a th:text="${supplier.cif}"></a><br>
-        Nombre: <a th:text="${supplier.name}"></a><br>
-        Código postal: <a th:text="${supplier.postalCode}"></a><br>
-        Email: <a th:text="${supplier.email}"></a><br>
-        Número de teléfono: <a th:text="${supplier.phoneNumber}"></a><br>
+        <b>CIF: </b><a th:text="${supplier.cif}"></a><br>
+        <b>Nombre: </b><a th:text="${supplier.name}"></a><br>
+        <b>Código postal: </b><a th:text="${supplier.postalCode}"></a><br>
+        <b>Email: </b><a th:text="${supplier.email}"></a><br>
+        <b>Número de teléfono: </b><a th:text="${supplier.phoneNumber}"></a><br>
     </p>
     <form action="/addAnotherOneSupplier">
         <input type="submit" value="Añadir otro" />
@@ -21,6 +24,6 @@
     <form action="/">
         <input type="submit" value="Volver" />
     </form>
-
+</div>
 </body>
 </html>

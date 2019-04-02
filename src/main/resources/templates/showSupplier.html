@@ -8,6 +8,7 @@
     <link href="/css/mika.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="page">
 <h1>Modificar proveedor</h1>
 <form action="/modifySupplier" method="post">
     <input type="hidden" name="id" th:value="${supplier.id}">
@@ -32,5 +33,6 @@
 <form action="/backFromModifySupplierToSupplierQuery">
     <input type="submit" value="Cancelar" />
 </form>
+</div>
 </body>
 </html>
