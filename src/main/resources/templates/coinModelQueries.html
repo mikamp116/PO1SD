@@ -3,43 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Consultas</h1>
-    <form action="/coinModelQuery" method="post">
+    <header id="main-header">
+        <a id="logo-header" href="#">
+            <span class="site-name">Museo Sole Novum</span>
+            <span class="site-desc">Consultas de modelos</span>
+        </a>
+    </header>
 
-        <fieldset>
-            <legend>Filtros</legend>
-            Ordenar por
-            <select name="orderBy">
-                <option value="FaceValue" th:selected="(${qOrderBy} == FaceValue)">Valor facial</option>
-                <option value="Diameter" th:selected="(${qOrderBy} == Diameter)">Diámetro (en mm)</option>
-                <option value="Weight" th:selected="(${qOrderBy} == Weight)">Peso (en g)</option>
-            </select>
-            Orden
-            <select name="order">
-                <option value="1" th:selected="(${qOrder} == 1)">Ascendente</option>
-                <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
-            </select>
-        </fieldset>
+    <div id="contenedor3">
 
-        <fieldset>
-            <legend>Consultas</legend>
-            <p>Se pueden combinar como máximo dos elementos</p>
-            Valor facial
-            <input name="FaceValue" type="text" placeholder="Ej: 0.50" th:value="${qFaceValue}">
-            Divisa
-            <input name="Currency" type="text" placeholder="Dolar mexicano" th:value="${qCurrency}">
-            Diámetro (en mm)
-            <input name="Diameter" type="text" placeholder="Ej: 25.0" th:value="${qDiameter}">
-            Peso (en g)
-            <input name="Weight" type="text" placeholder="Ej: 45.6" th:value="${qWeight}">
-            Metales
-            <textarea name="Metals" rows="3" cols="30" placeholder="Ej: Oro, Níquel, Plata..." th:value="${qMetals}"></textarea>
-        </fieldset>
+        <div id="dual">
+            <form action="/coinModelQuery" method="post">
 
-        <input name="show" type="submit" value="Consultar">
-    </form>
+                <fieldset>
+                    <legend>Filtros</legend>
+                    Ordenar por
+                    <select name="orderBy">
+                        <option value="FaceValue" th:selected="(${qOrderBy} == FaceValue)">Valor facial</option>
+                        <option value="Diameter" th:selected="(${qOrderBy} == Diameter)">Diámetro (en mm)</option>
+                        <option value="Weight" th:selected="(${qOrderBy} == Weight)">Peso (en g)</option>
+                    </select>
+                    Orden
+                    <select name="order">
+                        <option value="1" th:selected="(${qOrder} == 1)">Ascendente</option>
+                        <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Consultas</legend>
+                    <p>Se pueden combinar como máximo dos elementos</p>
+                    Valor facial    <input name="FaceValue" type="text" placeholder="Ej: 0.50" th:value="${qFaceValue}"><br>
+                    Divisa          <input name="Currency" type="text" placeholder="Dolar mexicano" th:value="${qCurrency}"><br>
+                    Diámetro (en mm)<input name="Diameter" type="text" placeholder="Ej: 25.0" th:value="${qDiameter}"><br>
+                    Peso (en g)     <input name="Weight" type="text" placeholder="Ej: 45.6" th:value="${qWeight}"><br>
+                    Metales         <textarea name="Metals" rows="1" cols="35" placeholder="Ej: Oro, Níquel, Plata..." th:value="${qMetals}"></textarea>
+                </fieldset>
+                <br>
+                <input name="show" type="submit" value="Consultar">
+            </form>
+        </div>
+        <form action="/">
+            <input type="submit" value="Volver" />
+        </form>
+    </div>
 
     <h2>Modelos de moneda</h2>
     <p th:each="coinModel : ${coinModels}">
@@ -47,7 +57,6 @@
         <a th:href="@{/modifyCoinModel(id=${coinModel.id})}">Modificar</a>
     </p>
 
-    <p>Si quiere volver al inicio pulse <a href="/">aqui</a></p>
 
 </body>
 </html>

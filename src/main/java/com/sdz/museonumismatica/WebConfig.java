@@ -1,5 +1,6 @@
 package com.sdz.museonumismatica;
 
+import com.sdz.museonumismatica.utility.SetToStringConverter;
 import com.sdz.museonumismatica.utility.StringToFloatConverter;
 import com.sdz.museonumismatica.utility.StringToSetConverter;
 import org.springframework.context.annotation.Configuration;
@@ -13,5 +14,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry){
         registry.addConverter(new StringToFloatConverter());
         registry.addConverter(new StringToSetConverter());
+        registry.addConverter(new SetToStringConverter());
     }
 }

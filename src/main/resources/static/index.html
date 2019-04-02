@@ -6,36 +6,38 @@
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header id="main-header">
-    <a id="logo-header" href="#">
-        <span class="site-name">Museo Sole Novum</span>
-        <span class="site-desc">Para bañarse en monedas, necesitas conocerlas</span>
-    </a>
-</header>
+<div id="contenedor">
+    <header id="main-header">
+        <a id="logo-header" href="#">
+            <span class="site-name">Museo Sole Novum</span>
+            <span class="site-desc">Para bañarse en monedas, necesitas conocerlas</span>
+        </a>
+    </header>
 
-    <h2>Bienvenido a la base de datos del museo</h2>
-    <form action="/query" method="post">
-        <fieldset>
-            <legend>Consultas</legend>
-            <select name="entities">
-                <option value="coinModel">Modelo de moneda</option>
-                <option value="coin">Ejemplar</option>
-                <option value="supplier">Proveedor</option>
-            </select>
-            <input name="consultas" type="submit" value="Consultar">
-        </fieldset>
-    </form>
+        <h2>Bienvenido a la base de datos del museo</h2>
+        <form action="/query" method="post">
+            <fieldset>
+                <legend>Consultas</legend>
+                <select name="entities">
+                    <option value="coinModel">Modelo de moneda</option>
+                    <option value="coin">Ejemplar</option>
+                    <option value="supplier">Proveedor</option>
+                </select>
+                <input name="consultas" type="submit" value="Consultar">
+            </fieldset>
+        </form>
 
-    <form action="/add" method="post">
-        <fieldset>
-            <legend>Añadir</legend>
-            <select name="entities">
-                <option value="coinModel">Modelo de moneda</option>
-                <option value="coin">Ejemplar</option>
-                <option value="supplier">Proveedor</option>
-            </select>
-            <input name="anadir" type="submit" value="Añadir">
-        </fieldset>
-    </form>
+        <form action="/add" method="post">
+            <fieldset>
+                <legend>Añadir</legend>
+                <select name="entities">
+                    <option value="coinModel">Modelo de moneda</option>
+                    <option value="coin">Ejemplar</option>
+                    <option value="supplier">Proveedor</option>
+                </select>
+                <input name="anadir" type="submit" value="Añadir">
+            </fieldset>
+        </form>
+</div>
 </body>
 </html>

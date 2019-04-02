@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p>Modelo de moneda modificado con éxito</p>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Su ejemplar de moneda ha sido modificado con éxito</span>
+    </a>
+</header>
 
-    <form action="/consultas" method="post">
-        <input type="hidden" name="entities" value="coinModel">
-        <input type="submit" name="coinModel" value="Volver">
-    </form>
-
+<form action="/query" method="post">
+    <fieldset>
+        <legend>Consultar algo más</legend>
+        <select name="entities">
+            <option value="coin">Ejemplar (volver atrás)</option>
+            <option value="coinModel">Modelo de moneda</option>
+            <option value="supplier">Proveedor</option>
+        </select>
+        <input name="anadir" type="submit" value="Consultar">
+    </fieldset>
+</form>
+<form action="/">
+    <input type="submit" value="Volver al inicio" />
+</form>
 </body>
 </html>
