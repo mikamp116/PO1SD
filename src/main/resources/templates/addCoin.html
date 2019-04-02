@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,8 +14,7 @@
         <span class="site-desc">Añadir ejemplar a la base de datos</span>
     </a>
 </header>
-<div id="contenedor">
-    <div id="crear">
+<div class="page">
         <form action="/coinAdded" method="post">
             <fieldset>
                 <p>Modelo de moneda: <select name="coinModel">
@@ -33,7 +33,6 @@
             </fieldset>
         </form>
         <br>
-        <div id="nuevo1">
             <form action="add" method="post">
                 <fieldset>
                     <legend>Añadir otro</legend>
@@ -44,11 +43,9 @@
                     <input name="anadir" type="submit" value="Añadir">
                 </fieldset>
             </form>
-        </div>
         <form action="/">
             <input type="submit" value="Volver" />
         </form>
-    </div>
 </div>
 </body>
 </html>

@@ -8,6 +8,12 @@
     <link href="/css/mika.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Modifique su proveedor</span>
+    </a>
+</header>
 <div class="page">
 <h1>Modificar proveedor</h1>
 <form action="/modifySupplier" method="post">
@@ -19,13 +25,13 @@
         Nombre: <input type="text" name="name" th:value="${supplier.name}" required>
     </p>
     <p>
-        Código postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}" max="999999999" required>
+        Código postal: <input type="number" name="postalCode" th:value="${supplier.postalCode}" required>
     </p>
     <p>
         Email: <input type="email" name="email" th:value="${supplier.email}" placeholder="email@example.com" required>
     </p>
     <p>
-        Número de teléfono: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}" max="999999999" required>
+        Número de teléfono: <input type="number" name="phoneNumber" th:value="${supplier.phoneNumber}" required>
     </p>
     <input name="modify" type="submit" value="Modificar">
 </form>

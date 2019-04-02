@@ -8,8 +8,13 @@
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Su proveedor ha sido añadido con exito</span>
+    </a>
+</header>
 <div class="page">
-    <h3>Proveedor añadido con éxito</h3>
     <p>
         <b>CIF: </b><a th:text="${supplier.cif}"></a><br>
         <b>Nombre: </b><a th:text="${supplier.name}"></a><br>

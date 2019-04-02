@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,7 +14,9 @@
         <span class="site-desc">Su ejemplar de moneda ha sido modificado con éxito</span>
     </a>
 </header>
-<div id="contenedor">
+<div class="page">
+    <h3>Proveedor modificado con éxito</h3>
+    <div class="antes">
     <fieldset>
         <legend>Ejemplar desoués de la modificación</legend>
         Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>
@@ -23,8 +26,8 @@
         Localización: <a th:text="${coin.coinLocation}"></a><br>
         Estado de preservación: <a th:text="${coin.preservationState}"></a><br>
     </fieldset>
-
-
+    </div>
+    <div class="despues">
     <fieldset>
         <legend>Ejemplar antes de la modificación</legend>
         Modelo de moneda: <a th:text="${coin_b.coinModel}"></a><br>
@@ -34,10 +37,9 @@
         Localización: <a th:text="${coin_b.coinLocation}"></a><br>
         Estado de preservación: <a th:text="${coin_b.preservationState}"></a><br>
     </fieldset>
+    </div>
 
-    <p>Si quiere cambiar algo de nuevo pulse <a th:href="@{/coinModify(id=${coin.id}, coinn=${coin})}">aquí</a>
-    <p>
-
+    <div class="final">
     <form action="/query" method="post">
         <fieldset>
             <legend>Consultar algo más</legend>
@@ -52,6 +54,7 @@
     <form action="/">
         <input type="submit" value="Volver al inicio"/>
     </form>
+    </div>
 </div>
 </body>
 </html>

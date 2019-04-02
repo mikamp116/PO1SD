@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,7 +14,7 @@
         <span class="site-desc">Modifique su ejemplar</span>
     </a>
 </header>
-<div id="contenedor">
+<div class="page">
     <form action="/coinModified" method="post">
         <input type="hidden" name="id" th:value="${coin.id}">
         <fieldset>

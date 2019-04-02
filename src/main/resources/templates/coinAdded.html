@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,7 +14,7 @@
         <span class="site-desc">Su ejemplar de moneda ha sido añadido con éxito</span>
     </a>
 </header>
-<div id="contenedor">
+<div class="page">
     <fieldset>
         Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>
         Proveedor: <a th:text="${coin.supplier}"></a><br>
@@ -21,8 +22,7 @@
         Fecha de adquisicion: <a th:text="${coin.acquisitionDate}"></a><br>
         Localización: <a th:text="${coin.coinLocation}"></a><br>
         Estado de preservación: <a th:text="${coin.preservationState}"></a><br></fieldset>
-    <p>Si quiere cambiar algo pulse <a th:href="@{/modificarEjemplar(id=${coin.id}, coinn=${coin})}">aqui</a><p>
-    <form action="/add" method="post">
+        <form action="/add" method="post">
         <fieldset>
             <legend>Añadir otro nuevo</legend>
             <select name="entities">

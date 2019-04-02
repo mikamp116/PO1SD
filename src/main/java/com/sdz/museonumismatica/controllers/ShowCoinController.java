@@ -2,6 +2,7 @@ package com.sdz.museonumismatica.controllers;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.sdz.museonumismatica.CoinModel;
@@ -2586,6 +2587,10 @@ public class ShowCoinController {
     //Muestra todos los coins que se encuentran en la base de datos
     @RequestMapping("/allCoins")
     public String showAll(Model model) {
+        java.util.Date utilDate = new GregorianCalendar(1990, 1, 1).getTime();
+        java.sql.Date date= new java.sql.Date(utilDate.getTime());
+        model.addAttribute("qqueryD", date);
+        model.addAttribute("qqueryY", 1990);
         model.addAttribute("coinModels", coinModelRepository.findAll());
         model.addAttribute("suppliers", supplierRepository.findAll());
         model.addAttribute("coins", coinRepo.findAll());

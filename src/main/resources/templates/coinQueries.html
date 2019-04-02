@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Museo SN</title>
     <link rel="icon" type="image/png" href="/mkcoin.png"/>
+    <link href="/css/mika.css" rel="stylesheet" type="text/css">
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -13,8 +14,8 @@
         <span class="site-desc">Consultas de ejemplares</span>
     </a>
 </header>
-<div id="contenedor2">
-    <div id="dual">
+<div class="page">
+    <div class="filtros">
         <form action="/coinQuery" method="post">
             <fieldset>
                 <legend>Filtros</legend>
@@ -30,6 +31,8 @@
                     <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
                 </select>
             </fieldset>
+    </div>
+    <div class="consulta">
             <fieldset>
                 <legend>Busqueda</legend>
                 Buscar por <select name="value1">
@@ -80,8 +83,6 @@
     <form action="/">
         <input type="submit" value="Volver" />
     </form>
-</div>
-<div id="ejemplares">
     <h2>Ejemplares</h2>
     <p th:each="coin : ${coins}">
         Modelo de moneda: <a th:text="${coin.coinModel}"></a><br>

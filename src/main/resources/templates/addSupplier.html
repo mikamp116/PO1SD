@@ -9,8 +9,13 @@
 </head>
 
 <body>
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Añadir Proveedor a la base de datos</span>
+    </a>
+</header>
 <div class="page">
-    <h1>Añadir proveedor</h1>
     <form action="/supplierAdded" method="post">
         <p>
             Código de Identificación Fiscal: <input type="text" name="cif" required>
@@ -19,13 +24,13 @@
             Nombre: <input type="text" name="name" required>
         </p>
         <p>
-            Dirección postal: <input type="number" name="postalCode" max="999999999" required>
+            Dirección postal: <input type="number" name="postalCode" required>
         </p>
         <p>
             Email: <input type="email" name="email" placeholder="email@example.com" required>
         </p>
         <p>
-            Teléfono de contacto: <input type="number" name="phoneNumber" max="999999999" required>
+            Teléfono de contacto: <input type="number" name="phoneNumber" required>
         </p>
 
         <input name="add" type="submit" value="Añadir">
