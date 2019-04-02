@@ -8,6 +8,23 @@ body {
 
 }
 
+
+.antes {
+    float: left;
+    width: auto;
+}
+
+.despues {
+    float: left;
+    width: auto;
+}
+
+.final {
+    clear: both;
+    text-align: center;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
 .page {
     background-color: aliceblue;
     margin: 2% 10% 5%;
@@ -59,18 +76,3 @@ body {
     visibility: visible;
 }
 
-.antes {
-    float: left;
-    width: auto;
-}
-
-.despues {
-    float: left;
-    width: auto;
-}
-
-.final {
-    clear: both;
-    text-align: center;
-    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
-}
