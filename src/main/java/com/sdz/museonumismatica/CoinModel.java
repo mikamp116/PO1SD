@@ -1,7 +1,6 @@
 package com.sdz.museonumismatica;
 
 import com.sdz.museonumismatica.utility.FloatConstraint;
-import com.sdz.museonumismatica.utility.SetConstraint;
 import com.sdz.museonumismatica.utility.SetToStringConverter;
 
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +35,6 @@ public class CoinModel {
     @FloatConstraint
     private float weight; // en gramos
     @NotNull
-    @SetConstraint
     private TreeSet<String> metals;
     private String description;
 

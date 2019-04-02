@@ -1,11 +1,15 @@
 package com.sdz.museonumismatica.utility;
 
-import com.sdz.museonumismatica.utility.FloatConstraint;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
+/**
+ * @Author Víctor Fernández
+ *
+ * Esta clase sirve para validar los números decimales e integrar la validación con Spring y thymeleaf
+ */
 public class FloatValidator implements ConstraintValidator<FloatConstraint, Float> {
     @Override
     public void initialize(FloatConstraint constraintAnnotation) {
