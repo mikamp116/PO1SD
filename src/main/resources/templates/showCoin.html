@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="/css/base.css" rel="stylesheet" type="text/css">
-    <link href="/css/add.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header id="main-header">
@@ -14,28 +13,26 @@
     </a>
 </header>
 <div id="contenedor">
-    <form action="/ejemplarModificado" method="post">
+    <form action="/coinModified" method="post">
         <input type="hidden" name="id" th:value="${coin.id}">
         <fieldset>
-            <p><b>Modelo de moneda:</b> <select name="coinModel">
+            <p>Modelo de moneda:<select name="coinModel">
                 <option th:value="${coin.coinModel.id}" th:text="${coin.coinModel}">
                 <option th:if="coinModel.id!=null" th:each="coinModel : ${coinModels}"
                         th:value="${coinModel.id}" th:text="${coinModel}"></option>
             </select></p>
-            <p><b>Año: </b><input type="number" name="coinYear" th:value="${coin.coinYear}"></p>
-            <p><b>Fecha de adquisición: </b><input type="date" name="acquisitionDate"
-                                                   th:value="${coin.acquisitionDate}">
+            <p>Año: <input type="number" name="coinYear" th:value="${coin.coinYear}" required></p>
+            <p>Fecha de adquisición: <input type="date" name="acquisitionDate" th:value="${coin.acquisitionDate}" required>
             </p>
-            <p><b>Localización de la moneda: </b><input type="text" name="coinLocation" th:value="${coin.coinLocation}">
+            <p>Localización de la moneda: <input type="text" name="coinLocation" th:value="${coin.coinLocation}"required>
             </p>
-            <p><b>Estado de preservación: </b><input type="text" name="preservationState"
-                                                     th:value="${coin.preservationState}"></p>
-            <p><b>
+            <p>Estado de preservación: <input type="text" name="preservationState" th:value="${coin.preservationState}" required></p>
+            <p>
                 Proveedor: <select name="supplier">
                 <option th:value="${coin.supplier.id}" th:text="${coin.supplier}">
                 <option th:if="supplier.id!=null" th:each="supplier : ${suppliers}"
                         th:value="${supplier.id}" th:text="${supplier}"></option>
-            </select></b></p>
+            </select></p>
             <input name="modify" type="submit" value="Modificar">
         </fieldset>
     </form>

@@ -18,7 +18,7 @@ public class AddController {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @RequestMapping("/anadir")
+    @RequestMapping("/add")
     public String add(@RequestParam("entities") String entity, Model model) {
         if (entity.equals("coinModel")) {
             model.addAttribute("coinModel", new CoinModel());
@@ -32,7 +32,7 @@ public class AddController {
         return "addSupplier";
     }
 
-    @RequestMapping("/anadir/{str}")
+    @RequestMapping("/add/{str}")
     public String addFromURL(@PathVariable(value= "str") String str){
         return "add" + str;
 

@@ -9,11 +9,9 @@ import java.util.TreeSet;
 public class StringToSetConverter implements Converter<String, Set> {
 
     @Override
-    public TreeSet convert(String source){
+    public TreeSet<String> convert(String source){
         if (source!=null && !source.isEmpty()) {
-            TreeSet set = new TreeSet();
-            set.addAll(Arrays.asList(source.split(", ")));
-            return set;
+            return new TreeSet<>(Arrays.asList(source.split(", ")));
         }
         else return null;
     }

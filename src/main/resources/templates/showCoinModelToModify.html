@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Modificar modelo de moneda</h1>
-    <form action ="#" th:action="@{/updateCoinModel}" method="post" th:object="${newCoinModel}">
-        <input type="hidden" th:name="id" th:id="id" th:value="${oldCoinModel.id}">
-        <p>
-            Valor facial: <input type="text" th:name="faceValue" th:id="faceValue"  th:value="${oldCoinModel.faceValue}">
-        </p>
-        <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}">error de valor facial</p>
-        <p>
-            Unidad monetaria: <input type="text" th:value="${oldCoinModel.currency}" th:name="currency" th:id="currency">
-        </p>
-        <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">error de unidad monetaria</p>
-        <p>
-            Diámetro (en mm): <input type="text" th:value="${oldCoinModel.diameter}" th:name="diameter" th:id="diameter">
-        </p>
-        <p th:if="${#fields.hasErrors('diameter')}" th:errors="*{diameter}">error de diametro</p>
-        <p>
-            Peso (en g): <input type="text" th:value="${oldCoinModel.weight}" th:name="weight" th:id="weight">
-        </p>
-        <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">error de peso</p>
-        <p>
-            Metal/es de los que está compuesto: <textarea  rows="2" cols="30" th:name="metals" th:id="metals">[[${{oldCoinModel.metals}}]]</textarea>
-        </p>
-        <p>
-            Descripción: <textarea  rows="2" cols="30" th:name="description" th:id="description">[[${oldCoinModel.description}]]</textarea>
-        </p>
-        <input name="modify" type="submit" value="Modificar">
-    </form>
 
-    <form action="/consultas" method="post">
-        <input type="hidden" name="entities" value="coinModel">
-        <input type="submit" name="coinModel" value="Cancelar">
-    </form>
+    <header id="main-header">
+        <a id="logo-header" href="#">
+            <span class="site-name">Museo Sole Novum</span>
+            <span class="site-desc">Modifique el modelo</span>
+        </a>
+    </header>
 
+    <div id="contenedor">
+        <form action ="#" th:action="@{/updateCoinModel}" method="post" th:object="${newCoinModel}">
+            <input type="hidden" th:name="id" th:id="id" th:value="${oldCoinModel.id}">
+            <p>
+                Valor facial: <input type="text" th:name="faceValue" th:id="faceValue"  th:value="${oldCoinModel.faceValue}" required/>
+            </p>
+            <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}">error de valor facial</p>
+            <p>
+                Unidad monetaria: <input type="text" th:value="${oldCoinModel.currency}" th:name="currency" th:id="currency" required/>
+            </p>
+            <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">error de unidad monetaria</p>
+            <p>
+                Diámetro (en mm): <input type="text" th:value="${oldCoinModel.diameter}" th:name="diameter" th:id="diameter" required/>
+            </p>
+            <p th:if="${#fields.hasErrors('diameter')}" th:errors="*{diameter}">error de diametro</p>
+            <p>
+                Peso (en g): <input type="text" th:value="${oldCoinModel.weight}" th:name="weight" th:id="weight" required/>
+            </p>
+            <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">error de peso</p>
+            <p>
+                Metal/es de los que está compuesto: <textarea  rows="2" cols="30" th:name="metals" th:id="metals" required>[[${{oldCoinModel.metals}}]]</textarea>
+            </p>
+            <p>
+                Descripción: <textarea  rows="2" cols="30" th:name="description" th:id="description">[[${oldCoinModel.description}]]</textarea>
+            </p>
+            <input name="modify" type="submit" value="Modificar">
+        </form>
+
+        <form action="/consultas" method="post">
+            <input type="hidden" name="entities" value="coinModel">
+            <input type="submit" name="coinModel" value="Cancelar">
+        </form>
+    </div>
 </body>
 </html>

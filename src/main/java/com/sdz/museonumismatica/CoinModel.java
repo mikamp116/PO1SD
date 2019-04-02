@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -24,7 +23,7 @@ public class CoinModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull(message = "Por favor, introduzca un valor no nulo")
+    @NotNull
     @FloatConstraint
     private float faceValue;
     @NotNull
@@ -119,7 +118,7 @@ public class CoinModel {
         this.weight = weight;
     }
 
-    public Set<String> getMetals() {
+    public TreeSet<String> getMetals() {
         return metals;
     }
 
