@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Museo SN</title>
+    <link rel="icon" type="image/png" href="/mkcoin.png"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css">
     <link href="/css/mika.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="page">
 <h1>Modificar proveedor</h1>
-    <br>
 <form action="/modifySupplier" method="post">
     <input type="hidden" name="id" th:value="${supplier.id}">
     <p>
@@ -33,7 +32,5 @@
 <form action="/backFromModifySupplierToSupplierQuery">
     <input type="submit" value="Cancelar" />
 </form>
-
-</div>
 </body>
 </html>

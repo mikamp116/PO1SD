@@ -2,37 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Museo DB</title>
-    <link href="/css/base.css" rel="stylesheet" type="text/css">
-    <link href="/css/mika.css" rel="stylesheet" type="text/css">
+    <title>Museo SN</title>
+    <link rel="icon" type="image/png" href="/mkcoin.png"/>
 </head>
 <body>
-<div class="page">
 <h3>Proveedor modificado con éxito</h3>
-<div class="antes">
-    <fieldset>
-        <legend>Proveedor antes de la modificación</legend>
-            <b>CIF: </b><a th:text="${supplier.cif}"></a><br>
-            <b>Nombre: </b><a th:text="${supplier.name}"></a><br>
-            <b>Código postal: </b><a th:text="${supplier.postalCode}"></a><br>
-            <b>Email: </b><a th:text="${supplier.email}"></a><br>
-            <b>Número de teléfono: </b><a th:text="${supplier.phoneNumber}"></a><br>
-    </fieldset>
-</div>
 
-    <div class="despues">
-        <fieldset>
-        <legend>Proveedor después de la modificación</legend>
-            <b>CIF: </b><a th:text="${supplier_b.cif}"></a><br>
-            <b>Nombre: </b><a th:text="${supplier_b.name}"></a><br>
-            <b>Código postal: </b><a th:text="${supplier_b.postalCode}"></a><br>
-            <b>Email: </b><a th:text="${supplier_b.email}"></a><br>
-            <b>Número de teléfono: </b><a th:text="${supplier_b.phoneNumber}"></a><br>
-        </fieldset>
-    </div>
+<p>Proveedor después de la modificación</p>
+<p>
+    CIF: <a th:text="${supplier.cif}"></a><br>
+    Nombre: <a th:text="${supplier.name}"></a><br>
+    Código postal: <a th:text="${supplier.postalCode}"></a><br>
+    Email: <a th:text="${supplier.email}"></a><br>
+    Número de teléfono: <a th:text="${supplier.phoneNumber}"></a><br>
+</p>
 
-    <div class="final">
-        <br>
+<p>Proveedor antes de la modificación</p>
+<p>
+    CIF: <a th:text="${supplier_b.cif}"></a><br>
+    Nombre: <a th:text="${supplier_b.name}"></a><br>
+    Código postal: <a th:text="${supplier_b.postalCode}"></a><br>
+    Email: <a th:text="${supplier_b.email}"></a><br>
+    Número de teléfono: <a th:text="${supplier_b.phoneNumber}"></a><br>
+</p>
 <form action="/backFromModifySupplierToSupplierQuery">
     <input type="submit" value="Hacer otra consulta" />
 </form>
@@ -40,7 +32,5 @@
 <form action="/">
     <input type="submit" value="Volver"/>
 </form>
-    </div>
-</div>
 </body>
 </html>
