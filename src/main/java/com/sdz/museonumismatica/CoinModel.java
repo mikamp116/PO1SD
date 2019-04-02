@@ -1,6 +1,7 @@
 package com.sdz.museonumismatica;
 
 import com.sdz.museonumismatica.utility.FloatConstraint;
+import com.sdz.museonumismatica.utility.SetConstraint;
 import com.sdz.museonumismatica.utility.SetToStringConverter;
 
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class CoinModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull(message = "Por favor, introduzca un valor no nulo")
+    @NotNull
     @FloatConstraint
     private float faceValue;
     @NotNull
@@ -36,6 +37,7 @@ public class CoinModel {
     @FloatConstraint
     private float weight; // en gramos
     @NotNull
+    @SetConstraint
     private TreeSet<String> metals;
     private String description;
 
@@ -119,7 +121,7 @@ public class CoinModel {
         this.weight = weight;
     }
 
-    public Set<String> getMetals() {
+    public TreeSet<String> getMetals() {
         return metals;
     }
 

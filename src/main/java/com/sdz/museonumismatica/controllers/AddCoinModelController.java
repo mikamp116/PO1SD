@@ -23,7 +23,6 @@ public class AddCoinModelController {
     public String addCoinModel(@Valid @ModelAttribute("coinModel") CoinModel coinModel, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()){
-            System.out.println("hay errores");
             return "addCoinModel";
         }
 

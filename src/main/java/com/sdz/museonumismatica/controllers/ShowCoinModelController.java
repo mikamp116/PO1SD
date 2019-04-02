@@ -1,7 +1,6 @@
 package com.sdz.museonumismatica.controllers;
 
 import com.sdz.museonumismatica.CoinModel;
-import com.sdz.museonumismatica.utility.StringToSetConverter;
 import com.sdz.museonumismatica.repositories.CoinModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
+
 
 
 /**
  * @author Víctor Fernández
+ *
+ *      Esta clase controla las consultas y redirecciona las modificaciones.
+ *
  */
 
 @Controller
@@ -34,19 +36,19 @@ public class ShowCoinModelController {
         return "showCoinModelToModify";
     }
 
+
     @RequestMapping("/coinModelQuery")
     public String queries(@RequestParam("FaceValue") float faceValue,
                           @RequestParam("Currency") String currency,
                           @RequestParam("Weight") float weight,
                           @RequestParam("Diameter") float diameter,
-                          @RequestParam("Metals") String metals,
                           @RequestParam("orderBy") String orderBy,
                           @RequestParam("order") int order,
                           Model model){
 
         List<CoinModel> coinModels = new ArrayList<>();
-        StringToSetConverter converterSet = new StringToSetConverter();
-        TreeSet<String> metalsSet = converterSet.convert(metals);
+
+
 
         model.addAttribute("qOrderBy", orderBy);
         model.addAttribute("qOrder", order);
@@ -98,23 +100,6 @@ public class ShowCoinModelController {
                         if(order==1) coinModels = repo.findAllByFaceValueAndWeightOrderByWeightAsc(faceValue, weight);
                         else coinModels = repo.findAllByFaceValueAndWeightOrderByWeightDesc(faceValue, weight);
                 } model.addAttribute("qWeight", weight);
-            } else if(metalsSet!=null) {
-                switch (orderBy) {
-                    case "FaceValue":
-                        if (order == 1)
-                            coinModels = repo.findAllByFaceValueAndMetalsOrderByFaceValueAsc(faceValue, metalsSet);
-                        else coinModels = repo.findAllByFaceValueAndMetalsOrderByFaceValueDesc(faceValue, metalsSet);
-                        break;
-                    case "Diameter":
-                        if (order == 1)
-                            coinModels = repo.findAllByFaceValueAndMetalsOrderByDiameterAsc(faceValue, metalsSet);
-                        else coinModels = repo.findAllByFaceValueAndMetalsOrderByDiameterDesc(faceValue, metalsSet);
-                        break;
-                    case "Weight":
-                        if (order == 1)
-                            coinModels = repo.findAllByFaceValueAndMetalsOrderByWeightAsc(faceValue, metalsSet);
-                        else coinModels = repo.findAllByFaceValueAndMetalsOrderByWeightDesc(faceValue, metalsSet);
-                } model.addAttribute("qMetals", metals);
             } else {
                 switch (orderBy) {
                     case "FaceValue":
@@ -174,26 +159,6 @@ public class ShowCoinModelController {
                             coinModels = repo.findAllByCurrencyContainingAndWeightOrderByWeightAsc(currency, weight);
                         else coinModels = repo.findAllByCurrencyContainingAndWeightOrderByWeightDesc(currency, weight);
                 } model.addAttribute("qWeight", weight);
-            } else if (metalsSet != null) {
-                switch (orderBy) {
-                    case "FaceValue":
-                        if (order == 1)
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByFaceValueAsc(currency, metalsSet);
-                        else
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByFaceValueDesc(currency, metalsSet);
-                        break;
-                    case "Diameter":
-                        if (order == 1)
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByDiameterAsc(currency, metalsSet);
-                        else
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByDiameterDesc(currency, metalsSet);
-                        break;
-                    case "Weight":
-                        if (order == 1)
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByWeightAsc(currency, metalsSet);
-                        else
-                            coinModels = repo.findAllByCurrencyContainingAndMetalsOrderByWeightDesc(currency, metalsSet);
-                } model.addAttribute("qMetals", metals);
             } else{
                 switch (orderBy) {
                     case "FaceValue":
@@ -229,23 +194,6 @@ public class ShowCoinModelController {
                         else coinModels = repo.findAllByDiameterAndWeightOrderByWeightDesc(diameter, weight);
                 } model.addAttribute("qWeight", weight);
 
-            } else if(metalsSet!=null) {
-                switch (orderBy) {
-                    case "FaceValue":
-                        if (order == 1)
-                            coinModels = repo.findAllByDiameterAndMetalsOrderByFaceValueAsc(diameter, metalsSet);
-                        else coinModels = repo.findAllByDiameterAndMetalsOrderByFaceValueDesc(diameter, metalsSet);
-                        break;
-                    case "Diameter":
-                        if (order == 1)
-                            coinModels = repo.findAllByDiameterAndMetalsOrderByDiameterAsc(diameter, metalsSet);
-                        else coinModels = repo.findAllByDiameterAndMetalsOrderByDiameterDesc(diameter, metalsSet);
-                        break;
-                    case "Weight":
-                        if (order == 1)
-                            coinModels = repo.findAllByDiameterAndMetalsOrderByWeightAsc(diameter, metalsSet);
-                        else coinModels = repo.findAllByDiameterAndMetalsOrderByWeightDesc(diameter, metalsSet);
-                } model.addAttribute("qMetals", metals);
             } else {
                 switch (orderBy) {
                     case "Diameter":
@@ -264,24 +212,7 @@ public class ShowCoinModelController {
             } model.addAttribute("qDiameter", diameter);
         }
         else if (weight > 0) {
-             if (metalsSet != null) {
-                switch (orderBy) {
-                    case "FaceValue":
-                        if (order == 1)
-                            coinModels = repo.findAllByWeightAndMetalsOrderByFaceValueAsc(weight, metalsSet);
-                        else coinModels = repo.findAllByWeightAndMetalsOrderByFaceValueDesc(weight, metalsSet);
-                        break;
-                    case "Diameter":
-                        if (order == 1)
-                            coinModels = repo.findAllByWeightAndMetalsOrderByDiameterAsc(weight, metalsSet);
-                        else coinModels = repo.findAllByWeightAndMetalsOrderByDiameterDesc(weight, metalsSet);
-                        break;
-                    case "Weight":
-                        if (order == 1)
-                            coinModels = repo.findAllByWeightAndMetalsOrderByWeightAsc(weight, metalsSet);
-                        else coinModels = repo.findAllByWeightAndMetalsOrderByWeightDesc(weight, metalsSet);
-                } model.addAttribute("qMetals", metals);
-            } else {
+
                 switch (orderBy) {
                     case "Weight":
                         coinModels = repo.findAllByWeight(weight);
@@ -296,32 +227,13 @@ public class ShowCoinModelController {
                             coinModels = repo.findAllByWeightOrderByDiameterAsc(weight);
                         else coinModels = repo.findAllByWeightOrderByDiameterDesc(weight);
                 }
-            } model.addAttribute("qWeight", weight);
+             model.addAttribute("qWeight", weight);
 
-        }
-
-        else if (metalsSet!=null){
-            switch (orderBy) {
-                case "Weight":
-                    if (order == 1) coinModels = repo.findAllByMetalsInOrderByWeightAsc(metalsSet);
-                    else coinModels = repo.findAllByMetalsInOrderByWeightDesc(metalsSet);
-                    break;
-                case "FaceValue":
-                    if (order == 1)
-                        coinModels = repo.findAllByMetalsInOrderByFaceValueAsc(metalsSet);
-                    else coinModels = repo.findAllByMetalsInOrderByFaceValueDesc(metalsSet);
-                    break;
-                case "Diameter":
-                    if (order == 1)
-                        coinModels = repo.findAllByMetalsInOrderByDiameterAsc(metalsSet);
-                    else coinModels = repo.findAllByMetalsInOrderByDiameterDesc(metalsSet);
-            } model.addAttribute("qMetals", metals);
         }
         //Si no se introduce ningún campo, mostramos todos los elementos
         else {
             coinModels = repo.findAll();
         }
-
 
 
         model.addAttribute("coinModels", coinModels);

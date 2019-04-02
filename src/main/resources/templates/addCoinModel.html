@@ -17,11 +17,11 @@
             <p>
                 Valor facial: <input type="text" name="faceValue" placeholder="ej: 1.50" required/>
             </p>
-            <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}">error de valor facial</p>
+            <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}"></p>
             <p>
                 Unidad monetaria: <input type="text" th:field="*{currency}" required/>
             </p>
-            <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">error de unidad monetaria</p>
+            <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"></p>
             <p>
                 Diámetro (en mm): <input type="text" name="diameter" placeholder="ej: 20.0" required/>
             </p>
@@ -29,15 +29,15 @@
             <p>
                 Peso (en g): <input type="text" name="weight" placeholder="ej: 35" required/>
             </p>
-            <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">error de peso</p>
+            <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></p>
 
             <p>Metal/es de los que está compuesto:</p>
                 <textarea th:field="*{metals}" rows="1" cols="60" placeholder="Metal 1[, metal 2, metal 3, ...]" required></textarea>
-            <p th:if="${#fields.hasErrors('metals')}" th:errors="*{metals}">error de peso</p>
+            <p th:if="${#fields.hasErrors('metals')}" th:errors="*{metals}"></p>
 
             <p>Descripción: </p>
                 <textarea th:field="*{description}" rows="6" cols="60"></textarea>
-            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">error de peso</p>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
             <br>
             <input name="add" type="submit" value="Añadir">
         </form>

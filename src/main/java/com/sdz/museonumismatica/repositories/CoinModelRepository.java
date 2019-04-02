@@ -47,15 +47,6 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByFaceValueAndCurrencyContainingOrderByFaceValueAsc(float faceValue, String currency);
     List<CoinModel> findAllByFaceValueAndCurrencyContainingOrderByFaceValueDesc(float faceValue, String currency);
 
-    //Buscar por valor facial y metales
-    List<CoinModel> findAllByFaceValueAndMetals(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByDiameterAsc(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByDiameterDesc(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByWeightAsc(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByWeightDesc(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByFaceValueAsc(float faceValue, TreeSet<String> metals);
-    List<CoinModel> findAllByFaceValueAndMetalsOrderByFaceValueDesc(float faceValue, TreeSet<String> metals);
-
     //Buscar por divisa
     List<CoinModel> findAllByCurrencyContaining(String currency);
     List<CoinModel> findAllByCurrencyContainingOrderByWeightAsc(String currency);
@@ -83,14 +74,6 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByCurrencyContainingAndWeightOrderByDiameterAsc(String currency, float weight);
     List<CoinModel> findAllByCurrencyContainingAndWeightOrderByDiameterDesc(String currency, float weight);
 
-    //Buscar por divisa y metales
-    List<CoinModel> findAllByCurrencyContainingAndMetals(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByWeightAsc(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByWeightDesc(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByFaceValueAsc(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByFaceValueDesc(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByDiameterAsc(String currency, TreeSet<String> metals);
-    List<CoinModel> findAllByCurrencyContainingAndMetalsOrderByDiameterDesc(String currency, TreeSet<String> metals);
 
     //Buscar por diametro
     List<CoinModel> findAllByDiameter(float diameter);
@@ -99,14 +82,6 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByDiameterOrderByWeightAsc(float diameter);
     List<CoinModel> findAllByDiameterOrderByWeightDesc(float diameter);
 
-    //Buscar por diametro y metales
-    List<CoinModel> findAllByDiameterAndMetals(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByFaceValueAsc(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByFaceValueDesc(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByWeightAsc(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByWeightDesc(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByDiameterAsc(float diameter, TreeSet<String> metals);
-    List<CoinModel> findAllByDiameterAndMetalsOrderByDiameterDesc(float diameter, TreeSet<String> metals);
 
     //Buscar por diametro y peso
     List<CoinModel> findAllByDiameterAndWeight(float diameter, float weight);
@@ -124,22 +99,6 @@ public interface CoinModelRepository extends JpaRepository<CoinModel, Long> {
     List<CoinModel> findAllByWeightOrderByDiameterAsc(float weight);
     List<CoinModel> findAllByWeightOrderByDiameterDesc(float weight);
 
-    //Buscar por peso y metales
-    List<CoinModel> findAllByWeightAndMetals(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByFaceValueAsc(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByFaceValueDesc(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByWeightAsc(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByWeightDesc(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByDiameterAsc(float weight, TreeSet<String> metals);
-    List<CoinModel> findAllByWeightAndMetalsOrderByDiameterDesc(float weight, TreeSet<String> metals);
 
-    //Buscar por metales
-    List<CoinModel> findAllByMetalsIn(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByFaceValueAsc(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByFaceValueDesc(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByWeightAsc(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByWeightDesc(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByDiameterAsc(TreeSet<String> metals);
-    List<CoinModel> findAllByMetalsInOrderByDiameterDesc(TreeSet<String> metals);
 
 }
