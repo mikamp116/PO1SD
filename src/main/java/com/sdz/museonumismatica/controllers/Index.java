@@ -50,6 +50,7 @@ public class Index {
 
         coinModelRepository.save(dos_euros);
         coinModelRepository.save(un_euro);
+        coinModelRepository.save(doblon_esp);
         supplierRepository.save(supplier1);
         supplierRepository.save(supplier2);
         supplierRepository.save(supplier3);
