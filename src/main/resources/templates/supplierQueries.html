@@ -24,17 +24,16 @@
             Ordenar por
             <select name="orderBy">
                 <option value="CIF">CIF</option>
-            <option value="Name" th:selected="(${qOrderBy} == Name)">Nombre</option>
-            <option value="PostalCode" th:selected="(${qOrderBy} == PostalCode)">Codigo postal</option>
-            <option value="Email" th:selected="(${qOrderBy} == Email)">Email</option>
-            <option value="PhoneNumber" th:selected="(${qOrderBy} == PhoneNumber)">Numero de telefono</option>
+                <option value="Name">Nombre</option>
+                <option value="Postalcode">Codigo postal</option>
+                <option value="Email">Email</option>
+                <option value="Phonenumber">Numero de telefono</option>
             </select>
             Orden
             <select name="order">
-                <option value="1" th:selected="(${qOrder} == 1)">Ascendente</option>
-                <option value="0" th:selected="(${qOrder} == 0)">Descendente</option>
-            </select>
-        </fieldset>
+                <option value="Asc">Ascendente</option>
+                <option value="Desc">Descendente</option>
+            </select></fieldset>
         </div>
 
         <div class="consulta">

@@ -32,12 +32,7 @@ public class ShowSupplierController {
 
         List<Supplier> suppliers = new ArrayList<>();
 
-        //Para que la pagina recuerde lo que el usuario selecciono
-        model.addAttribute("qOrderBy", orderBy);
-        model.addAttribute("qOrder", order);
-
         if (!cif.isEmpty()) {
-            model.addAttribute("qCIF", cif);
             if (name.isEmpty() && postalCodeA == null && postalCodeB == null && email.isEmpty() && phoneNumber == null)
                 switch (orderBy) {
                     case "CIF":
@@ -271,7 +266,6 @@ public class ShowSupplierController {
                         break;
                 }
         } else if (!name.isEmpty()) {
-            model.addAttribute("qName", name);
             if (cif.isEmpty() && postalCodeA == null && postalCodeB == null && email.isEmpty() && phoneNumber == null)
                 switch (orderBy) {
                     case "CIF":
@@ -471,7 +465,6 @@ public class ShowSupplierController {
                         break;
                 }
         } else if (!email.isEmpty()) {
-            model.addAttribute("qEmail", email);
             if (postalCodeA == null && postalCodeB == null && phoneNumber == null)
                 switch (orderBy) {
                     case "CIF":
@@ -638,7 +631,6 @@ public class ShowSupplierController {
                         break;
                 }
         } else if (phoneNumber!=null) {
-            model.addAttribute("qPhoneNumber", phoneNumber);
             if (postalCodeA == null && postalCodeB == null)
                 switch (orderBy) {
                     case "CIF":
@@ -772,8 +764,6 @@ public class ShowSupplierController {
                         break;
                 }
         } else if (postalCodeA!=null && postalCodeB!=null) {
-            model.addAttribute("qPCA", postalCodeA);
-            model.addAttribute("qPCB", postalCodeB);
             switch (orderBy) {
                 case "CIF":
                     if (order.equals("Asc"))
@@ -807,7 +797,6 @@ public class ShowSupplierController {
                     break;
             }
         } else if (postalCodeA!=null && postalCodeB==null) {
-            model.addAttribute("qPCA", postalCodeA);
             switch (orderBy) {
                 case "CIF":
                     if (order.equals("Asc"))
@@ -841,7 +830,6 @@ public class ShowSupplierController {
                     break;
             }
         } else if (postalCodeA==null && postalCodeB!=null) {
-            model.addAttribute("qPCB", postalCodeB);
             switch (orderBy) {
                 case "CIF":
                     if (order.equals("Asc"))
