@@ -1,8 +1,18 @@
-Victor Fernández Fernández, DNI: 47522661S
+Vï¿½ctor Fernï¿½ndez Fernï¿½ndez, DNI: 47522661S
 Jorge Chavero Morcillo, DNI: 53905005C
 Mikayel Mardanyan Petrosyan, DNI: 55066243B
 
-Víctor se ha encargado del modelo de moneda (clase Coin Model), sus controladores, repositorio y htmls.
-Jorge se ha encargado de los ejemplares de moneda (clase Coin), sus controladores, repositorio y htmls, así como de plantear diseños para los estilo de la página y hacer los tests de prueba finales.
+Vï¿½ctor se ha encargado del modelo de moneda (clase Coin Model), sus controladores, repositorio, htmls, validadores y conversores para poder almacenar el tipo de datos float.
+Jorge se ha encargado de los ejemplares de moneda (clase Coin), sus controladores, repositorio y htmls, asï¿½ como de plantear diseï¿½os para los estilo de la pï¿½gina y hacer los tests de prueba finales.
 Mika se ha encargado de los proveedores (clase Supplier), sus controladores, repositorio y htmls.
 Como se puede observar, los trabajos han sido divididos de forma que de cada clase se ocupaba cada uno. 
+
+
+VÃ­ctor FernÃ¡ndez FernÃ¡ndez, DNI: 47522661S
+Jorge Chavero Morcillo, DNI: 53905005C
+Mikayel Mardanyan Petrosyan, DNI: 55066243B
+
+VÃ­ctor se ha encargado del modelo de moneda (clase Coin Model), sus controladores, repositorio, htmls, validadores y conversores para poder almacenar el tipo de datos float.
+Jorge se ha encargado de los ejemplares de moneda (clase Coin), sus controladores, repositorio y htmls, asÃ­ como de plantear diseÃ±os para los estilo de la pÃ¡gina y hacer los tests de prueba finales.
+Mika se ha encargado de los proveedores (clase Supplier), sus controladores, repositorio y htmls.
+Como se puede observar, los trabajos han sido divididos de forma que de cada clase se ocupaba cada uno.

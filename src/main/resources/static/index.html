@@ -17,8 +17,9 @@
     </header>
 
         <h2>Bienvenido a la base de datos del museo</h2>
+    <div class="centrado">
         <form action="/query" method="post">
-            <fieldset>
+            <fieldset id="cent1">
                 <legend>Consultas</legend>
                 <select name="entities">
                     <option value="coinModel">Modelo de moneda</option>
@@ -30,7 +31,7 @@
         </form>
 
         <form action="/add" method="post">
-            <fieldset>
+            <fieldset id="cent2">
                 <legend>Añadir</legend>
                 <select name="entities">
                     <option value="coinModel">Modelo de moneda</option>
@@ -40,6 +41,7 @@
                 <input name="anadir" type="submit" value="Añadir">
             </fieldset>
         </form>
+    </div>
 </div>
 </body>
 </html>
