@@ -7,6 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author Víctor Fernández
+ *
+ *  Esta clase añade los conversores para que se puedan usar automáticamente
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

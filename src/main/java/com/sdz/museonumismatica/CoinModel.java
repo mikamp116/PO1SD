@@ -12,7 +12,7 @@ import java.util.TreeSet;
 
 /**
  *
- * @author Victor Fernandez
+ * @author Víctor Fernández
  *
  *  Esta clase representa el modelo de monedas que se guardará en la base de datos
  */

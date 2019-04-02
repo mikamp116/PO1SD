@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header id="main-header">
-    <a id="logo-header" href="#">
-        <span class="site-name">Museo Sole Novum</span>
-        <span class="site-desc">Su ejemplar de moneda ha sido modificado con éxito</span>
-    </a>
-</header>
+    <header id="main-header">
+        <a id="logo-header" href="#">
+            <span class="site-name">Museo Sole Novum</span>
+            <span class="site-desc">Su modelo de moneda ha sido modificado con éxito</span>
+        </a>
+    </header>
+    <div id="contenedor">
+        <p>Modelo de moneda después de la modificación</p>
+        <p>
+            Valor facial: <a th:text="${newCoinModel.faceValue}"></a><br>
+            Divisa: <a th:text="${newCoinModel.currency}"></a><br>
+            Diámetro: <a th:text="${newCoinModel.diameter}"></a> mm<br>
+            Peso: <a th:text="${newCoinModel.weight}"> g</a><br>
+            Metales: <a th:text="${{newCoinModel.metals}}"></a><br>
+            Descripción: <a th:text="${newCoinModel.description}"></a><br>
+        </p>
 
-<form action="/query" method="post">
-    <fieldset>
-        <legend>Consultar algo más</legend>
-        <select name="entities">
-            <option value="coinModel">Modelo de moneda (volver atrás)</option>
-            <option value="coin">Ejemplar</option>
-            <option value="supplier">Proveedor</option>
-        </select>
-        <input name="anadir" type="submit" value="Consultar">
-    </fieldset>
-</form>
-<form action="/">
-    <input type="submit" value="Volver al inicio" />
-</form>
+        <p>Modelo de moneda antes de la modificación</p>
+        <p>
+            Valor facial: <a th:text="${oldCoinModel.faceValue}"></a><br>
+            Divisa: <a th:text="${oldCoinModel.currency}"></a><br>
+            Diámetro: <a th:text="${oldCoinModel.diameter}"></a> mm<br>
+            Peso: <a th:text="${oldCoinModel.weight}"> g</a><br>
+            Metales: <a th:text="${{oldCoinModel.metals}}"></a><br>
+            Descripción: <a th:text="${oldCoinModel.description}"></a><br>
+        </p>
+
+        <form action="/query" method="post">
+            <fieldset>
+                <legend>Consultar algo más</legend>
+                <select name="entities">
+                    <option value="coinModel">Modelo de moneda (volver atrás)</option>
+                    <option value="coin">Ejemplar</option>
+                    <option value="supplier">Proveedor</option>
+                </select>
+                <input name="anadir" type="submit" value="Consultar">
+            </fieldset>
+        </form>
+        <form action="/">
+            <input type="submit" value="Volver al inicio" />
+        </form>
+    </div>
 </body>
 </html>

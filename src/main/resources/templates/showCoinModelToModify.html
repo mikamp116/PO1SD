@@ -20,19 +20,19 @@
             <p>
                 Valor facial: <input type="text" th:name="faceValue" th:id="faceValue"  th:value="${oldCoinModel.faceValue}" required/>
             </p>
-            <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}">error de valor facial</p>
+            <p th:if="${#fields.hasErrors('faceValue')}" th:errors="*{faceValue}"></p>
             <p>
                 Unidad monetaria: <input type="text" th:value="${oldCoinModel.currency}" th:name="currency" th:id="currency" required/>
             </p>
-            <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">error de unidad monetaria</p>
+            <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"></p>
             <p>
                 Diámetro (en mm): <input type="text" th:value="${oldCoinModel.diameter}" th:name="diameter" th:id="diameter" required/>
             </p>
-            <p th:if="${#fields.hasErrors('diameter')}" th:errors="*{diameter}">error de diametro</p>
+            <p th:if="${#fields.hasErrors('diameter')}" th:errors="*{diameter}"></p>
             <p>
                 Peso (en g): <input type="text" th:value="${oldCoinModel.weight}" th:name="weight" th:id="weight" required/>
             </p>
-            <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">error de peso</p>
+            <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></p>
             <p>
                 Metal/es de los que está compuesto: <textarea  rows="2" cols="30" th:name="metals" th:id="metals" required>[[${{oldCoinModel.metals}}]]</textarea>
             </p>
@@ -42,9 +42,9 @@
             <input name="modify" type="submit" value="Modificar">
         </form>
 
-        <form action="/consultas" method="post">
+        <form action="/query" method="post">
             <input type="hidden" name="entities" value="coinModel">
-            <input type="submit" name="coinModel" value="Cancelar">
+            <input type="submit" value="Cancelar">
         </form>
     </div>
 </body>

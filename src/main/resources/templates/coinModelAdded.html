@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Museo DB</title>
     <link href="/css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p>Modelo de moneda añadido con éxito</p>
-    <form action="/addCoinModel">
-        <input type="submit" value="Añadir más" />
+<header id="main-header">
+    <a id="logo-header" href="#">
+        <span class="site-name">Museo Sole Novum</span>
+        <span class="site-desc">Su modelo de moneda ha sido añadido con éxito</span>
+    </a>
+</header>
+<div id="contenedor">
+
+    <p>
+        Valor facial: <a th:text="${addedCM.faceValue}"></a><br>
+        Divisa: <a th:text="${addedCM.currency}"></a><br>
+        Diámetro: <a th:text="${addedCM.diameter}"></a> mm<br>
+        Peso: <a th:text="${addedCM.weight}"> g</a><br>
+        Metales: <a th:text="${{addedCM.metals}}"></a><br>
+        Descripción: <a th:text="${addedCM.description}"></a><br>
+    </p>
+    <form action="/add" method="post">
+        <fieldset>
+            <legend>Añadir otro nuevo</legend>
+            <select name="entities">
+                <option value="coinModel">Modelo de moneda (volver atrás)</option>
+                <option value="coin">Ejemplar</option>
+                <option value="supplier">Proveedor</option>
+            </select>
+            <input name="anadir" type="submit" value="Añadir">
+        </fieldset>
     </form>
     <form action="/">
         <input type="submit" value="Volver" />
     </form>
-
+</div>
 </body>
 </html>
