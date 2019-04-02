@@ -1,13 +1,3 @@
-V�ctor Fern�ndez Fern�ndez, DNI: 47522661S
-Jorge Chavero Morcillo, DNI: 53905005C
-Mikayel Mardanyan Petrosyan, DNI: 55066243B
-
-V�ctor se ha encargado del modelo de moneda (clase Coin Model), sus controladores, repositorio, htmls, validadores y conversores para poder almacenar el tipo de datos float.
-Jorge se ha encargado de los ejemplares de moneda (clase Coin), sus controladores, repositorio y htmls, as� como de plantear dise�os para los estilo de la p�gina y hacer los tests de prueba finales.
-Mika se ha encargado de los proveedores (clase Supplier), sus controladores, repositorio y htmls.
-Como se puede observar, los trabajos han sido divididos de forma que de cada clase se ocupaba cada uno. 
-
-
 Víctor Fernández Fernández, DNI: 47522661S
 Jorge Chavero Morcillo, DNI: 53905005C
 Mikayel Mardanyan Petrosyan, DNI: 55066243B
